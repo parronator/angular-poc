@@ -1,5 +1,4 @@
-@import "~ng-zorro-antd/ng-zorro-antd.dark.css";
-//
+@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
 //@theme: default;
 //
 //// The prefix to use on all css classes from ant.
@@ -22,23 +21,23 @@
 //
 //// Color used by default to control hover and active backgrounds and for
 //// alert info backgrounds.
-//@primary-1: color(colorPalette('@{primary-color}', 1)); // replace tint(@primary-color, 90%)
-//@primary-2: color(colorPalette('@{primary-color}', 2)); // replace tint(@primary-color, 80%)
-//@primary-3: color(colorPalette('@{primary-color}', 3)); // unused
-//@primary-4: color(colorPalette('@{primary-color}', 4)); // unused
+//@primary-1: color(~`colorPalette('@{primary-color}', 1) `); // replace tint(@primary-color, 90%)
+//@primary-2: color(~`colorPalette('@{primary-color}', 2) `); // replace tint(@primary-color, 80%)
+//@primary-3: color(~`colorPalette('@{primary-color}', 3) `); // unused
+//@primary-4: color(~`colorPalette('@{primary-color}', 4) `); // unused
 //@primary-5: color(
-//colorPalette('@{primary-color}', 5)
+//  ~`colorPalette('@{primary-color}', 5) `
 //); // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
 //@primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
-//@primary-7: color(colorPalette('@{primary-color}', 7)); // replace shade(@primary-color, 5%)
-//@primary-8: color(colorPalette('@{primary-color}', 8)); // unused
-//@primary-9: color(colorPalette('@{primary-color}', 9)); // unused
-//@primary-10: color(colorPalette('@{primary-color}', 10)); // unused
+//@primary-7: color(~`colorPalette('@{primary-color}', 7) `); // replace shade(@primary-color, 5%)
+//@primary-8: color(~`colorPalette('@{primary-color}', 8) `); // unused
+//@primary-9: color(~`colorPalette('@{primary-color}', 9) `); // unused
+//@primary-10: color(~`colorPalette('@{primary-color}', 10) `); // unused
 //
 //// Base Scaffolding Variables
 //// ---
 //
-//// Background color for<body>`
+//// Background color for `<body>`
 //@body-background: #fff;
 //// Base background color for most components
 //@component-background: #fff;
@@ -106,8 +105,8 @@
 //
 //// LINK
 //@link-color: @primary-color;
-//@link-hover-color: color(colorPalette('@{link-color}', 5));
-//@link-active-color: color(colorPalette('@{link-color}', 7));
+//@link-hover-color: color(~`colorPalette('@{link-color}', 5) `);
+//@link-active-color: color(~`colorPalette('@{link-color}', 7) `);
 //@link-decoration: none;
 //@link-hover-decoration: none;
 //@link-focus-decoration: none;
@@ -155,7 +154,7 @@
 //@shadow-color-inverse: @component-background;
 //@box-shadow-base: @shadow-2;
 //@shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05),
-//0 -12px 48px 16px rgba(0, 0, 0, 0.03);
+//  0 -12px 48px 16px rgba(0, 0, 0, 0.03);
 //@shadow-1-down: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05),
 //0 12px 48px 16px rgba(0, 0, 0, 0.03);
 //@shadow-1-left: -6px 0 16px -8px rgba(0, 0, 0, 0.08), -9px 0 28px 0 rgba(0, 0, 0, 0.05),
@@ -325,7 +324,7 @@
 //@layout-trigger-background-light: #fff;
 //@layout-trigger-color-light: @text-color;
 //
-//// z-index list, order byz-index`
+//// z-index list, order by `z-index`
 //@zindex-badge: auto;
 //@zindex-table-fixed: 2;
 //@zindex-affix: 10;
@@ -383,16 +382,16 @@
 //@input-padding-horizontal-sm: @control-padding-horizontal-sm - 1px;
 //@input-padding-horizontal-lg: @input-padding-horizontal;
 //@input-padding-vertical-base: max(
-//round((@input-height-base - @font-size-base * @line-height-base) / 2 * 10) / 10 -
-//@border-width-base,
-//3px
+//  round((@input-height-base - @font-size-base * @line-height-base) / 2 * 10) / 10 -
+//  @border-width-base,
+//  3px
 //);
 //@input-padding-vertical-sm: max(
-//round((@input-height-sm - @font-size-base * @line-height-base) / 2 * 10) / 10 - @border-width-base,
-//0
+//  round((@input-height-sm - @font-size-base * @line-height-base) / 2 * 10) / 10 - @border-width-base,
+//  0
 //);
 //@input-padding-vertical-lg: ceil((@input-height-lg - @font-size-lg * @line-height-base) / 2 * 10) /
-//10 - @border-width-base;
+//  10 - @border-width-base;
 //@input-placeholder-color: hsv(0, 0, 75%);
 //@input-color: @text-color;
 //@input-icon-color: @input-color;
@@ -600,7 +599,7 @@
 //@table-font-size-md: @table-font-size;
 //@table-font-size-sm: @table-font-size;
 //// Sorter
-//// Legacy:table-header-sort-active-bg` is used for hover not real active
+//// Legacy: `table-header-sort-active-bg` is used for hover not real active
 //@table-header-sort-active-bg: darken(@table-header-bg, 3%);
 //// Filter
 //@table-header-filter-active-bg: darken(@table-header-sort-active-bg, 5%);
@@ -714,7 +713,7 @@
 //@tabs-card-height: 40px;
 //@tabs-card-active-color: @primary-color;
 //@tabs-card-horizontal-padding: (@tabs-card-height - floor(@font-size-base * @line-height-base)) / 2 -
-//@border-width-base @padding-md;
+//  @border-width-base @padding-md;
 //@tabs-card-horizontal-padding-sm: 6px @padding-md;
 //@tabs-card-horizontal-padding-lg: 7px @padding-md 6px;
 //@tabs-title-font-size: @font-size-base;
@@ -881,17 +880,17 @@
 //
 //// Alert
 //// ---
-//@alert-success-border-color: colorPalette('@{success-color}', 3);
-//@alert-success-bg-color: colorPalette('@{success-color}', 1);
+//@alert-success-border-color: ~`colorPalette('@{success-color}', 3) `;
+//@alert-success-bg-color: ~`colorPalette('@{success-color}', 1) `;
 //@alert-success-icon-color: @success-color;
-//@alert-info-border-color: colorPalette('@{info-color}', 3);
-//@alert-info-bg-color: colorPalette('@{info-color}', 1);
+//@alert-info-border-color: ~`colorPalette('@{info-color}', 3) `;
+//@alert-info-bg-color: ~`colorPalette('@{info-color}', 1) `;
 //@alert-info-icon-color: @info-color;
-//@alert-warning-border-color: colorPalette('@{warning-color}', 3);
-//@alert-warning-bg-color: colorPalette('@{warning-color}', 1);
+//@alert-warning-border-color: ~`colorPalette('@{warning-color}', 3) `;
+//@alert-warning-bg-color: ~`colorPalette('@{warning-color}', 1) `;
 //@alert-warning-icon-color: @warning-color;
-//@alert-error-border-color: colorPalette('@{error-color}', 3);
-//@alert-error-bg-color: colorPalette('@{error-color}', 1);
+//@alert-error-border-color: ~`colorPalette('@{error-color}', 3) `;
+//@alert-error-bg-color: ~`colorPalette('@{error-color}', 1) `;
 //@alert-error-icon-color: @error-color;
 //@alert-message-color: @heading-color;
 //@alert-text-color: @text-color;
@@ -902,7 +901,7 @@
 //@alert-with-description-padding-vertical: @padding-md - 1px;
 //@alert-with-description-padding: @alert-with-description-padding-vertical 15px
 //@alert-with-description-no-icon-padding-vertical @alert-with-description-icon-size * 2 +
-//@alert-with-description-padding-vertical;
+//  @alert-with-description-padding-vertical;
 //@alert-icon-top: 8px + @font-size-base * @line-height-base / 2 - @font-size-base / 2;
 //@alert-with-description-icon-size: 24px;
 //@alert-with-description-icon-top: @alert-with-description-padding-vertical;
