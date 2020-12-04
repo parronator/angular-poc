@@ -1,6 +1,6 @@
 <p>basic-form works!</p>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="basic-form">
   <div>
     <label for="name">
       Name
@@ -17,5 +17,6 @@
 
   <button class="-button" type="submit">Submit</button>
 
-  <p id="result">{{result}}</p>
+
 </form>
+<p id="result">{{result}}</p>

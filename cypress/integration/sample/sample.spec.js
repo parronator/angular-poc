@@ -20,9 +20,14 @@ describe('My First Test', () => {
     cy.url().should('include', '/basicform');
     let name = 'Jonas';
     let message = 'Hello, world!'
-    cy.get('#name').type(name);
-    cy.get('#message').type(message);
-    cy.get('.-button').click();
-    cy.get('#result').contains(name + ' says: ' + message);
+    cy.get('.basic-form')
+      .find('[formcontrolname="name"]').type(name)
+      .should('contain', name)
+    cy.get('.basic-form')
+      .find('[formcontrolname="message"]').type(message)
+      .should('contain', message)
+    cy.get('.basic-form').submit()
+      .next().should('contain', name + ' says: ' + message)
+
   })
 })
