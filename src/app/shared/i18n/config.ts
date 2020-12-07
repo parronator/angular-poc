@@ -1,4 +1,4 @@
-import {enUS, es} from 'date-fns/locale';
+import {enUS, es, ja} from 'date-fns/locale';
 
 /// Allowed languages involve 2 things:
 /// - Key: name of the translation file

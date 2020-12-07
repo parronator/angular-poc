@@ -3,5 +3,6 @@
   "allowedLanguages": {
     "en": "English",
     "es": "Spanish"
-  }
+  },
+  "HELLO": "hello {{value}}"
 }

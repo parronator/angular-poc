@@ -15,6 +15,7 @@ export class TranslationsComponent {
   }
 
   changeLanguage(): void {
+    console.log(this.i18n.translate('test'));
     this.i18n.changeLanguage(this.language);
   }
 
