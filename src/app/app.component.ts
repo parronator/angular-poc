@@ -10,4 +10,8 @@ export class AppComponent {
   constructor(public i18n: I18n) {
   }
   isCollapsed = false;
+
+  toggleSidebar(): void{
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

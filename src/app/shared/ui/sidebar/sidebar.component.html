@@ -1,0 +1,37 @@
+<ng-container>
+  <div class="sidebar__logo">
+    <a href="https://ng.ant.design/" target="_blank">
+      <img class="sidebar__logo-img" src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+      <h1 class="sidebar__logo-text">Ant Design Of Angular</h1>
+    </a>
+  </div>
+  <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard" id="dashboard">
+      <ul>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/welcome">Welcome</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/monitor">Monitor</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a>Workplace</a>
+        </li>
+      </ul>
+    </li>
+    <li nz-submenu nzOpen nzTitle="Form" nzIcon="form" id="form-menu">
+      <ul>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/basicform">Basic Form</a>
+        </li>
+      </ul>
+    </li>
+    <li nz-submenu nzOpen nzTitle="Translations" nzIcon="form" id="form-menu">
+      <ul>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/translations">Examples</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</ng-container>
