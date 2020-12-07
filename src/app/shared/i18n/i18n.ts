@@ -31,6 +31,8 @@ export abstract class I18n {
   abstract getCurrentLanguage(): string;
 
   abstract getAllowedLanguages(): string;
+
+  abstract translate(key: string): string;
 }
 
 @Injectable()
@@ -55,6 +57,10 @@ export class I18nService implements I18n {
 
   getAllowedLanguages(): any {
     return Object.keys(allowedLanguages);
+  }
+
+  translate(key: string): string {
+    return this.i18nNgx.instant(key);
   }
 }
 
