@@ -1,0 +1,17 @@
+<nz-layout class="sidebar-layout">
+  <ui-header (toggleCollapse)="toggleSidebar()" [isCollapsed]="isCollapsed"></ui-header>
+  <nz-layout>
+    <nz-sider
+      nzWidth="256px"
+      nzBreakpoint="md"
+      [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null">
+      <ui-sidebar [isCollapsed]="isCollapsed"></ui-sidebar>
+    </nz-sider>
+    <nz-content>
+      <div class="inner-content">
+        <ng-content></ng-content>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

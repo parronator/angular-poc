@@ -4,9 +4,9 @@ import {NzMenuModule} from 'ng-zorro-antd/menu';
 import {DashboardOutline, FormOutline, MenuFoldOutline, MenuUnfoldOutline} from '@ant-design/icons-angular/icons';
 import {NZ_ICONS, NzIconModule} from 'ng-zorro-antd/icon';
 import {NzSelectModule} from 'ng-zorro-antd/select';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import {RouterModule} from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {SidebarLayoutComponent} from './layouts/sidebar-layout/sidebar-layout.component';
 
 const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];
 
@@ -16,7 +16,6 @@ const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline
     NzMenuModule,
     NzIconModule,
     NzSelectModule,
-    RouterModule
   ],
   exports: [
     NzLayoutModule,
@@ -25,12 +24,12 @@ const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline
     NzSelectModule,
     HeaderComponent,
     SidebarComponent,
-    RouterModule
+    SidebarLayoutComponent,
   ],
   providers: [
     {provide: NZ_ICONS, useValue: icons}
   ],
-  declarations: [HeaderComponent, SidebarComponent]
+  declarations: [HeaderComponent, SidebarComponent, SidebarLayoutComponent]
 })
 export class UiModule {
 }

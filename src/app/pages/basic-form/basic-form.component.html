@@ -1,22 +1,24 @@
-<p>basic-form works!</p>
+<ui-sidebar-layout>
+  <p>basic-form works!</p>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="basic-form">
-  <div>
-    <label for="name">
-      Name
-    </label>
-    <input id="name" type="text" formControlName="name">
-  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="basic-form">
+    <div>
+      <label for="name">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
 
-  <div>
-    <label for="message">
-      Message
-    </label>
-    <input id="message" type="text" formControlName="message">
-  </div>
+    <div>
+      <label for="message">
+        Message
+      </label>
+      <input id="message" type="text" formControlName="message">
+    </div>
 
-  <button class="-button" type="submit">Submit</button>
+    <button class="-button" type="submit">Submit</button>
 
 
-</form>
-<p id="result">{{result}}</p>
+  </form>
+  <p id="result">{{result}}</p>
+</ui-sidebar-layout>
