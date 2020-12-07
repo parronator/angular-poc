@@ -6,30 +6,42 @@
     </a>
   </div>
   <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-    <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard" id="dashboard">
+    <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="appstore">
       <ul>
         <li nz-menu-item nzMatchRouter>
           <a routerLink="/welcome">Welcome</a>
         </li>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/monitor">Monitor</a>
-        </li>
-        <li nz-menu-item nzMatchRouter>
-          <a>Workplace</a>
+          <a routerLink="/translations">Translations example</a>
         </li>
       </ul>
     </li>
-    <li nz-submenu nzOpen nzTitle="Form" nzIcon="form" id="form-menu">
+    <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
       <ul>
         <li nz-menu-item nzMatchRouter>
           <a routerLink="/basicform">Basic Form</a>
         </li>
       </ul>
     </li>
-    <li nz-submenu nzOpen nzTitle="Translations" nzIcon="form" id="form-menu">
+    <li nz-submenu nzOpen nzTitle="UI components" nzIcon="form" nzIcon="star">
       <ul>
         <li nz-menu-item nzMatchRouter>
-          <a routerLink="/translations">Examples</a>
+          <a routerLink="/ui/headers">Headers</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/ui/sidebar">Sidebars</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/ui/typography">Typographies</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/ui/icon">Icons</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/ui/button">Buttons</a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/ui/legend">Legends</a>
         </li>
       </ul>
     </li>

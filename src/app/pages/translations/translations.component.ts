@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {I18n} from '../shared/i18n/i18n';
+import {I18n} from '../../shared/i18n/i18n';
 
 @Component({
   selector: 'app-translations',

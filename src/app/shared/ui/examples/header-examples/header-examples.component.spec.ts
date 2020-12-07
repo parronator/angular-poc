@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MonitorComponent } from './monitor.component';
+import { HeaderExamplesComponent } from './header-examples.component';
 
-describe('MonitorComponent', () => {
-  let component: MonitorComponent;
-  let fixture: ComponentFixture<MonitorComponent>;
+describe('HeaderExamplesComponent', () => {
+  let component: HeaderExamplesComponent;
+  let fixture: ComponentFixture<HeaderExamplesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MonitorComponent ]
+      declarations: [ HeaderExamplesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MonitorComponent);
+    fixture = TestBed.createComponent(HeaderExamplesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

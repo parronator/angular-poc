@@ -7,7 +7,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {I18n} from './shared/i18n/i18n';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslationsComponent} from './translations/translations.component';
+import {TranslationsComponent} from './pages/translations/translations.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import {TranslationsComponent} from './translations/translations.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    SharedModule,
     TranslateModule.forRoot(I18n.getDefaultConfiguration()),
-    SharedModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
