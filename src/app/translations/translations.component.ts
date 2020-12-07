@@ -12,7 +12,6 @@ export class TranslationsComponent {
 
   constructor(public i18n: I18n) {
     this.language = this.i18n.getCurrentLanguage();
-
   }
 
   changeLanguage(): void {

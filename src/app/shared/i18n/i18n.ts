@@ -1,11 +1,9 @@
-import en from '@angular/common/locales/en';
 import {NZ_I18N, NzI18nService} from 'ng-zorro-antd/i18n';
-import {enUS, ja, es} from 'date-fns/locale';
 import {Injectable} from '@angular/core';
 import {TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {allowedLanguages} from './allowedLanguages';
+import {I18nConfig} from './config';
 
 // AoT requires an exported function for factories
 export const HttpLoaderFactory = (http: HttpClient) => {
@@ -13,11 +11,9 @@ export const HttpLoaderFactory = (http: HttpClient) => {
 };
 
 export abstract class I18n {
-  static defaultLanguage = 'en';
-
   static getDefaultConfiguration(): any {
     return {
-      defaultLanguage: this.defaultLanguage,
+      defaultLanguage: I18nConfig.defaultLanguage,
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
@@ -38,16 +34,16 @@ export abstract class I18n {
 @Injectable()
 export class I18nService implements I18n {
   constructor(private i18nAntDesign: NzI18nService, private i18nNgx: TranslateService) {
-    i18nNgx.setDefaultLang(I18n.defaultLanguage);
-    i18nNgx.use(I18n.defaultLanguage);
+    i18nNgx.setDefaultLang(I18nConfig.defaultLanguage);
+    i18nNgx.use(I18nConfig.defaultLanguage);
   }
 
   static getGlobalConfiguration(): any {
-    return [{provide: NZ_I18N, useValue: enUS}, {provide: NZ_I18N, useValue: enUS}];
+    return [{provide: NZ_I18N, useValue: I18nConfig.allowedLanguages[I18nConfig.defaultLanguage]}];
   }
 
   changeLanguage(language: string): void {
-    this.i18nAntDesign.setDateLocale(allowedLanguages[language]);
+    this.i18nAntDesign.setDateLocale(I18nConfig.allowedLanguages[language]);
     this.i18nNgx.use(language);
   }
 
@@ -56,7 +52,7 @@ export class I18nService implements I18n {
   }
 
   getAllowedLanguages(): any {
-    return Object.keys(allowedLanguages);
+    return Object.keys(I18nConfig.allowedLanguages);
   }
 
   translate(key: string): string {
