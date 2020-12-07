@@ -1,0 +1,7 @@
+{
+  "test": "Test for translations working",
+  "allowedLanguages": {
+    "en": "English",
+    "es": "Spanish"
+  }
+}

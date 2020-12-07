@@ -1,0 +1,8 @@
+<div class="container">
+  <p class="hello-text">{{'test' | translate}}</p>
+
+  <nz-select nzPlaceHolder="Select language" [(ngModel)]="language" (ngModelChange)="changeLanguage()">
+    <nz-option *ngFor='let language of i18n.getAllowedLanguages()' [nzValue]="language"
+               nzLabel="{{ 'allowedLanguages.'+language | translate }}"></nz-option>
+  </nz-select>
+</div>

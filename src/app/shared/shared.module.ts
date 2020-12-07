@@ -1,28 +1,24 @@
 import {NgModule} from '@angular/core';
-import {I18n, I18nAntDesign} from './i18n/i18n';
+import {I18n, I18nService} from './i18n/i18n';
 import {CommonModule} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UiModule} from './ui/ui.module';
-
-I18n.init();
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
-    BrowserModule,
     CommonModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    TranslateModule,
     UiModule
   ],
   providers: [
-    {provide: I18n, useClass: I18nAntDesign},
-    ...I18nAntDesign.getGlobalConfiguration()
+    {provide: I18n, useClass: I18nService},
+    ...I18nService.getGlobalConfiguration()
   ],
-  exports: [UiModule]
+  exports: [UiModule, TranslateModule, FormsModule]
 })
 export class SharedModule {
 }
