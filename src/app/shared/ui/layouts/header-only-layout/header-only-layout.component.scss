@@ -1,0 +1,26 @@
+@import "src/app/shared/ui/themes/variables";
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.layout {
+  height: 100vh;
+}
+
+nz-content {
+  margin: 24px;
+}
+
+.outer-content{
+  //background-image: url($colibri-background-img-url);
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  height: 100%;
+}
+
