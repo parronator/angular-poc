@@ -1,6 +1,10 @@
 <ui-sidebar-layout>
-  <nz-divider nzText="SidebarLayout"></nz-divider>
-  <ui-sidebar-layout>Content</ui-sidebar-layout>
-  <nz-divider nzText="Header only layout"></nz-divider>
-  <ui-header-only-layout [title]="'Title'">Content</ui-header-only-layout>
+  <ui-search-header header></ui-search-header>
+  <ui-sidebar sidebar></ui-sidebar>
+  <ng-container body>
+    <nz-divider nzText="SidebarLayout"></nz-divider>
+    <ui-sidebar-layout>Content</ui-sidebar-layout>
+    <nz-divider nzText="Header only layout"></nz-divider>
+    <ui-header-only-layout [title]="'Title'">Content</ui-header-only-layout>
+  </ng-container>
 </ui-sidebar-layout>
