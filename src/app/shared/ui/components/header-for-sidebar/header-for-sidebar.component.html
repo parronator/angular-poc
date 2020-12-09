@@ -1,0 +1,12 @@
+<nz-header class="header">
+  <div class="header__container">
+        <span class="header__trigger" (click)="toggleSidebar()">
+            <i class="header__trigger-icon"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+    <!--What makes more sense: Title variable as input or NG content?-->
+    <span class="header__title"><ng-content></ng-content></span>
+  </div>
+</nz-header>

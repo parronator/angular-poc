@@ -4,5 +4,6 @@
     "en": "English",
     "es": "Spanish"
   },
-  "HELLO": "hello {{value}}"
+  "HELLO": "hello {{value}}",
+  "POSTitle": "POS Packaging Tool"
 }

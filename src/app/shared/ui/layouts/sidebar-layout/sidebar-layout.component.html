@@ -1,6 +1,6 @@
 <nz-layout class="sidebar-layout">
-  <ui-header (toggleCollapse)="toggleSidebar()" [isCollapsed]="isCollapsed"></ui-header>
-  <nz-layout>
+  <ui-header-for-sidebar (toggleCollapse)="toggleSidebar()" [isCollapsed]="isCollapsed">{{"POSTitle" | translate}}</ui-header-for-sidebar>
+  <nz-layout class="outer-content">
     <nz-sider
       nzWidth="256px"
       nzBreakpoint="md"
@@ -13,5 +13,6 @@
         <ng-content></ng-content>
       </div>
     </nz-content>
+
   </nz-layout>
 </nz-layout>

@@ -1,3 +1,4 @@
+@import "src/app/shared/ui/themes/variables";
 :host {
   display: flex;
   text-rendering: optimizeLegibility;
@@ -5,12 +6,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.sidebar-layout {
+.layout {
   height: 100vh;
 }
 
 nz-content {
   margin: 24px;
+}
+
+.outer-content{
+  //background-image: url($colibri-background-img-url);
 }
 
 .inner-content {
