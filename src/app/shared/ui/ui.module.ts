@@ -11,18 +11,25 @@ import {UIRoutingModule} from './ui-routing.module';
 import {HeaderExamplesComponent} from './examples/header-examples/header-examples.component';
 import {NzDividerModule} from 'ng-zorro-antd/divider';
 import {iconList} from './icons/icons';
-import { HeaderOnlyLayoutComponent } from './layouts/header-only-layout/header-only-layout.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LayoutExamplesComponent } from './examples/layout-examples/layout-examples.component';
-import {TranslateModule} from "@ngx-translate/core";
+import {HeaderOnlyLayoutComponent} from './layouts/header-only-layout/header-only-layout.component';
+import {HeaderComponent} from './components/header/header.component';
+import {LayoutExamplesComponent} from './examples/layout-examples/layout-examples.component';
+import {TranslateModule} from '@ngx-translate/core';
+import {SearchHeaderComponent} from './components/search-header/search-header.component';
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzGridModule} from 'ng-zorro-antd/grid';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     NzLayoutModule,
     NzMenuModule,
     NzIconModule,
     NzSelectModule,
+    NzInputModule,
     RouterModule,
+    NzGridModule,
     NzDividerModule,
     UIRoutingModule,
     TranslateModule
@@ -33,11 +40,14 @@ import {TranslateModule} from "@ngx-translate/core";
     NzIconModule,
     NzSelectModule,
     NzDividerModule,
+    NzInputModule,
+    NzGridModule,
     HeaderComponent,
     HeaderForSidebarComponent,
     HeaderOnlyLayoutComponent,
     SidebarComponent,
     SidebarLayoutComponent,
+    SearchHeaderComponent,
     RouterModule,
     LayoutExamplesComponent
   ],
@@ -51,7 +61,8 @@ import {TranslateModule} from "@ngx-translate/core";
     HeaderExamplesComponent,
     HeaderOnlyLayoutComponent,
     HeaderComponent,
-    LayoutExamplesComponent
+    LayoutExamplesComponent,
+    SearchHeaderComponent
   ]
 })
 export class UiModule {

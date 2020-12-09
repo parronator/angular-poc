@@ -1,0 +1,17 @@
+<div class="header__container">
+  <div nz-row>
+    <div nz-col nzSpan="6">
+      <span  class="header__trigger" (click)="sidebar ? sidebarService.toggle() : null">
+        <i *ngIf="sidebar" class="header__trigger-icon" nz-icon [nzType]="sidebarService.isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+      </span>
+      <span class="header__title">POS Packaging Tool</span>
+    </div>
+    <div nz-col nzSpan=12>
+      <nz-input-group [nzPrefix]="prefixTemplateUser">
+        <input type="text" nz-input placeholder="Search in POS"/>
+      </nz-input-group>
+      <ng-template #prefixTemplateUser><i nz-icon nzType="search"></i></ng-template>
+    </div>
+    <div nz-col nzSpan="6"></div>
+  </div>
+</div>

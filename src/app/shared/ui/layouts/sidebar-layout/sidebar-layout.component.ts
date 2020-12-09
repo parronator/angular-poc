@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {SidebarService} from './sidebar.service';
 
 @Component({
   selector: 'ui-sidebar-layout',
@@ -6,10 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-layout.component.scss']
 })
 export class SidebarLayoutComponent {
-
-  isCollapsed = false;
-
-  toggleSidebar(): void{
-    this.isCollapsed = !this.isCollapsed;
+  constructor(public sidebarService: SidebarService) {
   }
 }

@@ -1,18 +1,19 @@
 <nz-layout class="sidebar-layout">
-  <ui-header-for-sidebar (toggleCollapse)="toggleSidebar()" [isCollapsed]="isCollapsed">{{"POSTitle" | translate}}</ui-header-for-sidebar>
-  <nz-layout class="outer-content">
+  <nz-header class="sidebar-layout__header">
+    <ng-content select="[header]"></ng-content>
+  </nz-header>
+  <nz-layout class="sidebar-layout__outer-content">
     <nz-sider
       nzWidth="256px"
       nzBreakpoint="md"
-      [(nzCollapsed)]="isCollapsed"
+      [(nzCollapsed)]="sidebarService.isCollapsed"
       [nzTrigger]="null">
-      <ui-sidebar [isCollapsed]="isCollapsed"></ui-sidebar>
+      <ng-content select="[sidebar]"></ng-content>
     </nz-sider>
-    <nz-content>
-      <div class="inner-content">
-        <ng-content></ng-content>
+    <nz-content class="sidebar-layout__container">
+      <div class="sidebar-layout__content">
+        <ng-content select="[body]"></ng-content>
       </div>
     </nz-content>
-
   </nz-layout>
 </nz-layout>

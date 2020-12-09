@@ -1,12 +1,10 @@
-<nz-header class="header">
-  <div class="header__container">
-        <span class="header__trigger" (click)="toggleSidebar()">
+<div class="header__container">
+        <span class="header__trigger" (click)="sidebarService.toggle()">
             <i class="header__trigger-icon"
                nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+               [nzType]="sidebarService.isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
-    <!--What makes more sense: Title variable as input or NG content?-->
-    <span class="header__title"><ng-content></ng-content></span>
-  </div>
-</nz-header>
+  <!--What makes more sense: Title variable as input or NG content?-->
+  <span class="header__title">POS Packaging Tool</span>
+</div>

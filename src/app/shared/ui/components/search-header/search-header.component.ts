@@ -2,11 +2,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SidebarService} from '../../layouts/sidebar-layout/sidebar.service';
 
 @Component({
-  selector: 'ui-header-for-sidebar',
-  templateUrl: './header-for-sidebar.component.html',
-  styleUrls: ['./header-for-sidebar.component.scss']
+  selector: 'ui-search-header',
+  templateUrl: './search-header.component.html',
+  styleUrls: ['./search-header.component.scss']
 })
-export class HeaderForSidebarComponent {
+export class SearchHeaderComponent {
+  @Input() sidebar = true;
+
   constructor(public sidebarService: SidebarService) {
   }
 }
