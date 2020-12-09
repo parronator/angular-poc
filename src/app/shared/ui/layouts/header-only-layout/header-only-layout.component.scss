@@ -8,19 +8,24 @@
 
 .layout {
   height: 100vh;
+  &__title{
+    padding: 24px 0px 0px 24px;
+  }
+  &__outer-content{
+    background-image: url($colibri-background-img-url);
+  }
+  &__inner-content {
+    padding: 24px;
+    background: #fff;
+    height: 100%;
+  }
 }
 
 nz-content {
   margin: 24px;
 }
 
-.outer-content{
-  //background-image: url($colibri-background-img-url);
-}
 
-.inner-content {
-  padding: 24px;
-  background: #fff;
-  height: 100%;
-}
+
+
 
