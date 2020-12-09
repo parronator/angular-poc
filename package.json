@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "cypress:open": "cypress open",
-    "test": "ng test",
+    "test": "ng test -- --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -25,6 +25,7 @@
     "cypress": "^6.0.1",
     "ng-zorro-antd": "^10.2.0",
     "rxjs": "~6.6.0",
+    "ts-mockito": "^2.6.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
