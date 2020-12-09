@@ -3,6 +3,10 @@
   width: 100%;
   z-index: 2;
 
+  &__title{
+    padding-left: 20px;
+  }
+
   &__container {
     position: relative;
     height: 64px;
@@ -11,17 +15,6 @@
     box-shadow: 0 1px 4px rgba(0,21,41,.08);
   }
 
-  &__trigger {
-    height: 64px;
-    padding: 20px 24px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all .3s,padding 0s;
-  }
-
-  &__trigger-icon:hover {
-    color: #1890ff;
-  }
 }
 
 

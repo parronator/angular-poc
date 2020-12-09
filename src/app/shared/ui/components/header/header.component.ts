@@ -1,19 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ui-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  @Input()
-  isCollapsed = false;
-  @Output()
-  toggleCollapse = new EventEmitter();
+  constructor() { }
 
-  toggleSidebar(): void{
-    this.toggleCollapse.emit();
+  ngOnInit(): void {
   }
 
 }
