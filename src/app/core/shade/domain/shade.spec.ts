@@ -1,6 +1,7 @@
 import {Shade} from './shade';
-import {ShadeColor, ShadeName, UniqueId} from './valueObject';
+import {ShadeColor, ShadeName} from './shadeValueObject';
 import {shadeFixture} from '../../../../fixture/shade';
+import {UniqueId} from '../../shared/uniqueId';
 
 describe('Shade', () => {
   it('should be a valid entity', () => {

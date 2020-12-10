@@ -1,5 +1,5 @@
-import {ShadeFacade} from '../core/shade/domain/shadeFacade';
-import {Shade} from '../core/shade/domain/shade';
+import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
+import {Shade} from '../../core/shade/domain/shade';
 
 export class ShadeService {
   constructor(private shadeFacade: ShadeFacade) {

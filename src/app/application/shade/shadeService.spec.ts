@@ -1,6 +1,7 @@
+// @ts-ignore
 import {instance, mock, verify, when} from 'ts-mockito';
-import {shadeFixture} from '../../fixture/shade';
-import {ShadeFacade} from '../core/shade/domain/shadeFacade';
+import {shadeFixture} from '../../../fixture/shade';
+import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
 import {ShadeService} from './shadeService';
 
 const MockShadeFacade = mock<ShadeFacade>();
