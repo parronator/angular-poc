@@ -1,5 +1,5 @@
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {anyString, instance, mock, verify, when} from 'ts-mockito';
+import {anyString, instance, mock, reset, verify, when} from 'ts-mockito';
 import {ShadeFacade} from '../domain/shadeFacade';
 import {shadeFixture, shadeJSONFixture} from '../../../../fixture/shade';
 import {of} from 'rxjs';
@@ -16,18 +16,23 @@ describe('ShadeHttpFacade', () => {
     facade = new ShadeHttpFacade(mockHttpClient);
   });
 
+  afterEach(() => {
+    reset(MockHttpClient);
+  });
+
   describe('getList', () => {
     it('should return Shade list when http call success on proper url', async () => {
-      when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixture))
+      when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixture));
       const result = await facade.getAll();
       verify(MockHttpClient.get('/getListOfShades')).called();
       expect(result).toEqual([shadeFixture]);
     });
 
     it('should throw an error when http call is failing', async () => {
-      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}))
+      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
+      const call = facade.getAll();
       verify(MockHttpClient.get('/getListOfShades')).called();
-      await expectAsync(facade.getAll()).toBeRejectedWith(jasmine.any(ShadeHttpError));
+      await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeHttpError));
     });
   });
 });
