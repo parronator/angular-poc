@@ -14,7 +14,7 @@ describe('TestCollectionFacade', () => {
 
   it('should return a list of collection when calling "getAllCollections', async () => {
     const result = await facade.getAllCollections();
-    expect(result).toBe([collectionFixture]);
+    expect(result).toEqual([collectionFixture]);
   });
 
   it('should return single collection when calling "getAllCollections', async () => {

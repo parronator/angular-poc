@@ -21,9 +21,9 @@ describe('CollectionService', () => {
 
   it('should return all collections when calling getAllCollections', async () => {
     const data = [collectionFixture];
-    when(mockCollectionFacade.getAllCollections()).thenResolve(data);
+    when(MockCollectionFacade.getAllCollections()).thenResolve(data);
     const response = await collectionService.getAllCollections();
     expect(response).toEqual(data);
-    verify(mockCollectionFacade.getAllCollections()).called();
+    verify(MockCollectionFacade.getAllCollections()).called();
   });
 });

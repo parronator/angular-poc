@@ -8,6 +8,6 @@ export class Collection {
   }
 
   static create({id, name, shades}: any): Collection {
-    return new Shade(UniqueId.create(id), CollectionName.create(name), shades);
+    return new Collection(UniqueId.create(id), CollectionName.create(name), shades);
   }
 }
