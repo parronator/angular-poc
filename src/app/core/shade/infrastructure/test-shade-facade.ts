@@ -1,6 +1,6 @@
 import {ShadeFacade} from '../domain/shadeFacade';
 import {Shade} from '../domain/shade';
-import {shadeListFixture} from '../../../../fixture/shade';
+import {shadeListFixturePage1} from '../../../../fixture/shade';
 
 class NotImplementedException{}
 export class TestShadeFacade implements ShadeFacade{
@@ -11,7 +11,7 @@ export class TestShadeFacade implements ShadeFacade{
   }
 
   async getAll(): Promise<Shade[]> {
-    return Promise.resolve(shadeListFixture);
+    return Promise.resolve(shadeListFixturePage1);
   }
 
   async getShadeById(id: string): Promise<Shade> {
@@ -19,7 +19,7 @@ export class TestShadeFacade implements ShadeFacade{
     throw new NotImplementedException();
   }
 
-  async getShadesByCollectionId(collectionId: string): Promise<Shade[]> {
+  async getShadesByCollectionId(collectionId: string, page: number): Promise<Shade[]> {
     //TODO
     throw new NotImplementedException();
   }
