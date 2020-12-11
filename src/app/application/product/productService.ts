@@ -12,4 +12,8 @@ export class ProductService{
     return await this.productFacade.getAll();
   }
 
+  async create(product: Product): Promise<Product> {
+    return await this.productFacade.create(product);
+  }
 }
+
