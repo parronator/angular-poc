@@ -37,4 +37,24 @@ describe('ProductHttpFacade', ()=>{
       await expectAsync(facade.getAll()).toBeRejectedWith(jasmine.any(ProductHttpError));
     });
   });
+
+  describe('create', ()=>{
+    it('should create a new product and return it when http call success on proper url', async ()=>{
+      const data = productFixture;
+      const url = '/createProduct';
+      when(MockHttpClient.post(url, JSON.stringify(data))).thenReturn(of(data))
+      const result = await facade.create(data);
+      verify(MockHttpClient.post(url,  JSON.stringify(data))).called();
+      expect(result).toEqual(productFixture);
+    });
+
+    it('should throw an error when http call is failing', async ()=>{
+      const data = productFixture;
+      const url = '/createProduct';
+      when(MockHttpClient.post(url, JSON.stringify(data))).thenReject(new HttpErrorResponse({status: 500}))
+      const call = facade.create(data);
+      verify(MockHttpClient.post(url, JSON.stringify(data))).called();
+      await expectAsync(facade.create(data)).toBeRejectedWith(jasmine.any(ProductHttpError));
+    });
+  });
 });

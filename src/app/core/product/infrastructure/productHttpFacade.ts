@@ -25,4 +25,13 @@ export class ProductHttpFacade implements ProductFacade{
     }
   }
 
+  async create(product: Product): Promise<Product> {
+    try {
+      return await this.httpClient.post<Product>('/createProduct', JSON.stringify(product)).toPromise();
+    } catch (e) {
+      throw new ProductHttpError();
+    }
+  }
+
+
 }
