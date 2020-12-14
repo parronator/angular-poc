@@ -6,7 +6,7 @@ class NotImplementedException{}
 export class TestShadeFacade implements ShadeFacade{
 
   async create(): Promise<void> {
-    //TODO
+    // TODO
     throw new NotImplementedException();
   }
 
@@ -15,12 +15,17 @@ export class TestShadeFacade implements ShadeFacade{
   }
 
   async getShadeById(id: string): Promise<Shade> {
-    //TODO
+    // TODO
     throw new NotImplementedException();
   }
 
-  async getShadesByCollectionId(collectionId: string, page: number): Promise<Shade[]> {
-    //TODO
+  async getShadesByCollectionId(collectionId: string): Promise<Shade[]>{
+    // TODO
+    throw new NotImplementedException();
+  }
+
+  async getShadesByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]> {
+    // TODO
     throw new NotImplementedException();
   }
 

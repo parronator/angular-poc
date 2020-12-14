@@ -49,12 +49,12 @@ describe('ShadeHttpFacade', () => {
       const collectionId = '1';
       let page = 1;
       when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixturePage1));
-      const result1 = await facade.getShadesByCollectionId(collectionId, page);
+      const result1 = await facade.getShadesByCollectionIdAsPage(collectionId, page);
       verify(MockHttpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)).called();
       expect(result1).toEqual(shadeListFixturePage1);
       page = 2;
       when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixturePage2));
-      const result2 = await facade.getShadesByCollectionId(collectionId, page);
+      const result2 = await facade.getShadesByCollectionIdAsPage(collectionId, page);
       verify(MockHttpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)).called();
       verify(MockHttpClient.get(anyString())).twice();
       expect(result2).toEqual(shadeListFixturePage2);
@@ -64,7 +64,7 @@ describe('ShadeHttpFacade', () => {
       when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
       const collectionId = 'any';
       const page = 1;
-      const call = facade.getShadesByCollectionId(collectionId, page);
+      const call = facade.getShadesByCollectionIdAsPage(collectionId, page);
       verify(MockHttpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)).called();
       await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeHttpError));
     });
