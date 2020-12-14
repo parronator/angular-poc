@@ -9,7 +9,6 @@ import {
   singleRecipeFixture
 } from '../../../../fixture/recipe';
 import {of} from 'rxjs';
-import {ShadeHttpError} from '../../shade/infrastructure/shadeHttpFacade';
 
 const MockHttpClient = mock<HttpClient>();
 
@@ -29,35 +28,36 @@ describe('RecipeHttpFacade', () => {
   describe('get a list of recipes', () => {
     it('should return a list of recipes when retrieving all recipes.', async () => {
       when(MockHttpClient.get(anyString())).thenReturn(of(recipeJsonFixtureList));
-      const result = await facade.getAlLRecipes();
-      verify(MockHttpClient.get('/recipes')).called();
+      const result = await facade.getAllRecipes();
+      verify(MockHttpClient.get(RecipeHttpFacade.recipeUrl)).called();
       expect(result).toEqual(recipeFixtureList);
     });
 
     it('should throw an error when http call is failing', async () => {
       when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
-      const call = facade.getAlLRecipes();
-      verify(MockHttpClient.get('/getListOfShades')).called();
-      await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeHttpError));
+      const call = facade.getAllRecipes();
+      verify(MockHttpClient.get(RecipeHttpFacade.recipeUrl)).called();
+      await expectAsync(call).toBeRejectedWith(jasmine.any(RecipeHttpError));
     });
   });
 
-  describe('get single shades', () => {
-    it('should return a single shade when retriving a single shade', async () => {
+  describe('get single recipes', () => {
+    it('should return a single recipe', async () => {
       when(MockHttpClient.get(anyString())).thenReturn(of(singleJsonRecipeFixture));
       const result = await facade.getRecipeById('1');
-      verify(MockHttpClient.get('/shades?id=1')).called();
+      verify(MockHttpClient.get(RecipeHttpFacade.recipeUrl + '?recipeId')).called();
       expect(result).toEqual(singleRecipeFixture);
     });
+
     it('should throw an error when http call is failing', async () => {
       when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
       const call = facade.getRecipeById('1');
-      verify(MockHttpClient.get('/getListOfShades')).called();
+      verify(MockHttpClient.get(RecipeHttpFacade.recipeUrl + '?recipeId')).called();
       await expectAsync(call).toBeRejectedWith(jasmine.any(RecipeHttpError));
     });
   });
 
   it('should create an instance', () => {
-    expect(new RecipeHttpFacade()).toBeTruthy();
+    expect(singleRecipeFixture).toBeTruthy();
   });
 });
