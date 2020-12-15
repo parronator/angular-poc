@@ -1,5 +1,5 @@
 import { TestShadeFacade } from './test-shade-facade';
-import {shadeListFixture} from '../../../../fixture/shade';
+import {shadeListFixturePage1} from '../../../../fixture/shade';
 
 describe('TestShadeFacade', () => {
   let facade: TestShadeFacade;
@@ -14,6 +14,6 @@ describe('TestShadeFacade', () => {
 
   it('should return a list of shades when calling "getAllShades', async () => {
     const result = await facade.getAll();
-    expect(result).toEqual(shadeListFixture);
+    expect(result).toEqual(shadeListFixturePage1);
   });
 });

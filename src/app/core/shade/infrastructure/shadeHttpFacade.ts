@@ -41,9 +41,13 @@ export class ShadeHttpFacade implements ShadeFacade {
     }
   }
 
-  async getShadesByCollectionId(collectionId: string): Promise<Shade[]> {
+  async getShadesByCollectionId(collectionId: string): Promise<Shade[]>{
+    throw new ShadeHttpError();
+  }
+
+  async getShadesByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]> {
     try {
-      return await this.httpClient.get(`/shades?collectionid=${collectionId}`)
+      return await this.httpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)
         .pipe(
           map((values: any) => values.map((v: any) => Shade.create(v)))
         ).toPromise();
