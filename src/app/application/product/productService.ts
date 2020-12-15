@@ -1,7 +1,7 @@
 ﻿import {Product} from "../../core/product/domain/product";
 import {productFixture} from "../../../fixture/product";
 import {of} from "rxjs";
-import {ProductFacade} from "./productFacade";
+import {ProductFacade} from "../../core/product/domain/productFacade";
 
 export class ProductService{
   constructor(private productFacade:ProductFacade){

@@ -1,6 +1,6 @@
 ﻿import {productFixture, productJSONFixture} from "../../../fixture/product";
 import {ProductService} from "./productService";
-import {ProductFacade} from "./productFacade";
+import {ProductFacade} from "../../core/product/domain/productFacade";
 import {anyString, anything, instance, mock, verify, when} from "ts-mockito";
 import {ProductHttpError} from "../../core/product/infrastructure/productHttpFacade";
 import {of} from "rxjs";

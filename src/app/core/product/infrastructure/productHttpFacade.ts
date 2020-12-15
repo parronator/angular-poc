@@ -1,4 +1,4 @@
-﻿import {ProductFacade} from "../../../application/product/productFacade";
+﻿import {ProductFacade} from "../domain/productFacade";
 import {Product} from "../domain/product";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
