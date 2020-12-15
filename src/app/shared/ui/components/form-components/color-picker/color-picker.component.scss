@@ -1,0 +1,71 @@
+$circle-size: 20rem;
+$item-count: 40;
+$item-size: 1.5rem;
+$angle: (360 / $item-count);
+$rot: 0;
+
+.color-selector {
+  padding: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: $circle-size;
+    height: $circle-size;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 3em auto 0;
+    padding: 0;
+  }
+
+  &__title {
+    color: #aaa;
+    font-size: 1.1rem;
+    align-self: flex-start;
+  }
+  &__code {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  &__item {
+    display: block;
+    position: absolute;
+    height: 0.9rem;
+    width: 1.1rem;
+    top: 50%;
+    left: 50%;
+    margin: -($item-size / 2);
+    border: 2px solid transparent;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg)
+        translate($circle-size / 2)
+        rotate($angle * 0.1deg);
+      }
+      $rot: $rot + $angle;
+    }
+
+    &:hover,
+    &--selected {
+      border: 2px solid black;
+    }
+  }
+
+  &__selectedColor {
+    margin-top: 2rem;
+    height: 5rem;
+    width: 12rem;
+    border: 2px solid transparent;
+
+    &--selected {
+      border-color: black;
+    }
+  }
+}
