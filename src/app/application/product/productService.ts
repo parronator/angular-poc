@@ -1,7 +1,6 @@
 ﻿import {Product} from "../../core/product/domain/product";
-import {productFixture} from "../../../fixture/product";
-import {of} from "rxjs";
 import {ProductFacade} from "./productFacade";
+import {UniqueId} from "../../core/shared/uniqueId";
 
 export class ProductService{
   constructor(private productFacade:ProductFacade){
@@ -15,5 +14,10 @@ export class ProductService{
   async create(product: Product): Promise<Product> {
     return await this.productFacade.create(product);
   }
+
+  async getById(id: UniqueId): Promise<Product> {
+    return await this.productFacade.getById(id.value);
+  }
+
 }
 

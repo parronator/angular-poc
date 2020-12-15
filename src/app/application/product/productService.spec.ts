@@ -1,9 +1,7 @@
 ﻿import {productFixture, productJSONFixture} from "../../../fixture/product";
 import {ProductService} from "./productService";
 import {ProductFacade} from "./productFacade";
-import {anyString, anything, instance, mock, verify, when} from "ts-mockito";
-import {ProductHttpError} from "../../core/product/infrastructure/productHttpFacade";
-import {of} from "rxjs";
+import {instance, mock, verify, when} from "ts-mockito";
 
 const MockProductFacade = mock<ProductFacade>();
 
@@ -30,5 +28,13 @@ describe('ProductService', ()=>{
     const response = await productService.create(data);
     expect(response).toEqual(data);
     verify(MockProductFacade.create(data)).called();
+  });
+
+  it('should get a product by ID', async ()=>{
+    const data = productFixture;
+    when(MockProductFacade.getById(data.id.value)).thenResolve(data);
+    const response = await productService.getById(productFixture.id);
+    expect(response).toEqual(data);
+    verify(MockProductFacade.getById(data.id.value)).called();
   });
 });

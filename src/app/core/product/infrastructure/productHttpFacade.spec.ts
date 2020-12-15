@@ -5,7 +5,7 @@ import {ProductService} from "../../../application/product/productService";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {productFixture, productJSONFixture} from "../../../../fixture/product";
 import {of} from "rxjs";
-import {ShadeHttpError} from "../../shade/infrastructure/shadeHttpFacade";
+import {shadeFixture, shadeJSONFixture} from "../../../../fixture/shade";
 
 const MockHttpClient = mock<HttpClient>();
 
@@ -55,6 +55,26 @@ describe('ProductHttpFacade', ()=>{
       const call = facade.create(data);
       verify(MockHttpClient.post(url, JSON.stringify(data))).called();
       await expectAsync(facade.create(data)).toBeRejectedWith(jasmine.any(ProductHttpError));
+    });
+  });
+
+  describe('getById', ()=>{
+    it('should return the selected Product when http call success on proper url', async ()=>{
+      const data = productFixture;
+      const url = '/getProductById?id='+ data.id.value;
+      when(MockHttpClient.get(url)).thenReturn(of(productJSONFixture[0]))
+      const result = await facade.getById(data.id.value);
+      verify(MockHttpClient.get(url)).called();
+      expect(result).toEqual(productFixture);
+    });
+
+    it('should throw an error when http call is failing', async ()=>{
+      const data = productFixture;
+      const url = '/getProductById?id='+ data.id.value;
+      when(MockHttpClient.get(url)).thenReject(new HttpErrorResponse({status: 500}))
+      const result = facade.getById(data.id.value);
+      verify(MockHttpClient.get(url)).called();
+      await expectAsync(facade.getById(data.id.value)).toBeRejectedWith(jasmine.any(ProductHttpError));
     });
   });
 });

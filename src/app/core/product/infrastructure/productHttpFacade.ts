@@ -3,7 +3,7 @@ import {Product} from "../domain/product";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {Injectable} from "@angular/core";
-
+import {UniqueId} from "../../shared/uniqueId";
 
 export class ProductHttpError {
 }
@@ -28,6 +28,20 @@ export class ProductHttpFacade implements ProductFacade{
   async create(product: Product): Promise<Product> {
     try {
       return await this.httpClient.post<Product>('/createProduct', JSON.stringify(product)).toPromise();
+    } catch (e) {
+      throw new ProductHttpError();
+    }
+  }
+
+  async getById(id: string): Promise<Product> {
+    try {
+      return await this.httpClient.get('/getProductById?id='+ id)
+        .pipe(
+          map((values: any)  => {
+            console.log(values);
+            return Product.create(values);
+          })
+        ).toPromise();
     } catch (e) {
       throw new ProductHttpError();
     }
