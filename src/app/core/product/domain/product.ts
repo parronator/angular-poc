@@ -2,7 +2,7 @@
 import {ProductName} from "./productValueObject";
 
 export class Product{
-  constructor(id: UniqueId, public name: ProductName){
+  constructor(public id: UniqueId, public name: ProductName){
 
   }
 

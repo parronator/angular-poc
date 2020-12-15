@@ -11,6 +11,9 @@ import {TranslationsComponent} from './pages/translations/translations.component
 import {ShadeFacade} from './core/shade/domain/shadeFacade';
 import {ShadeHttpFacade} from './core/shade/infrastructure/shadeHttpFacade';
 
+import {ProductHttpFacade} from "./core/product/infrastructure/productHttpFacade";
+import {ProductFacade} from "./core/product/domain/productFacade";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,8 @@ import {ShadeHttpFacade} from './core/shade/infrastructure/shadeHttpFacade';
     AppRoutingModule,
   ],
   providers: [
-    {provide: ShadeFacade, useClass: ShadeHttpFacade}
+    {provide: ShadeFacade, useClass: ShadeHttpFacade},
+    {provide: ProductFacade, useClass: ProductHttpFacade}
   ],
   bootstrap: [AppComponent]
 })

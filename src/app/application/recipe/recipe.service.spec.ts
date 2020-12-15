@@ -18,7 +18,7 @@ describe('RecipeService', () => {
 
   afterEach(() => { reset(MockRecipeFacade); });
 
-  
+
   xit('should retrieve a list of all recipes', async () => {
     const data = recipeFixtureList;
     when(MockRecipeFacade.getAllRecipes()).thenResolve(data);
