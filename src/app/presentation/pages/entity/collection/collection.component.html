@@ -1,38 +1,34 @@
-<ui-sidebar-layout>
-  <ui-search-header header></ui-search-header>
-  <ui-sidebar sidebar></ui-sidebar>
-  <ng-container body>
-    <div class="collection-table__header">
-      <div class="collection-table__header__left-header">Shades: {{collection.Shades.length}}</div>
-      <div class="collection-table__header__right-header">
-        <i class="collection-table__icon-button" nz-icon nzType="filter" nzTheme="outline"></i>
-        <i class="collection-table__icon-button" nz-icon nzType="search" nzTheme="outline"></i>
-        <i class="collection-table__icon-button" nz-icon nzType="question-circle" nzTheme="outline"></i>
-        <button nz-button nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>Add Shade</button>
-      </div>
-    </div>
 
-    <nz-table #basicTable [nzData]="collection.Shades">
-      <thead>
-      <tr>
-        <th> <label nz-checkbox></label></th>
-        <th>Color</th>
-        <th>Name</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td> <label nz-checkbox></label></td>
-        <td><div class="shadePrev" [ngStyle]="{'background-color': data.color.value}"></div></td>
-        <td>{{data.name.value}}</td>
-        <td>
-          <a>Action 一 {{data.name.value}}</a>
-          <nz-divider nzType="vertical"></nz-divider>
-          <a>Delete</a>
-        </td>
-      </tr>
-      </tbody>
-    </nz-table>
-  </ng-container>
-</ui-sidebar-layout>
+<div class="collection-table__header">
+  <div class="collection-table__header__left-header">Shades: {{collection.Shades.length}}</div>
+  <div class="collection-table__header__right-header">
+    <i class="collection-table__icon-button" nz-icon nzType="filter" nzTheme="outline"></i>
+    <i class="collection-table__icon-button" nz-icon nzType="search" nzTheme="outline"></i>
+    <i class="collection-table__icon-button" nz-icon nzType="question-circle" nzTheme="outline"></i>
+    <button nz-button nzType="primary"><i nz-icon nzType="plus" nzTheme="outline"></i>Add Shade</button>
+  </div>
+</div>
+
+<nz-table #basicTable [nzData]="collection.Shades">
+  <thead class="collection-table__head">
+  <tr>
+    <th class="collection-table__select-col"><label nz-checkbox></label></th>
+    <th class="collection-table__shade-preview">Color</th>
+    <th class="collection-table__shade-name">Name</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of basicTable.data">
+    <td class="collection-table__select-col"> <label nz-checkbox></label></td>
+    <td class="collection-table__shade-preview"><div class="shadePrev" [ngStyle]="{'background-color': data.color.value}"></div></td>
+    <td class="collection-table__shade-name">{{data.name.value}}</td>
+    <td>
+      <a>Action 一 {{data.name.value}}</a>
+      <nz-divider nzType="vertical"></nz-divider>
+      <a>Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+

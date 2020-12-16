@@ -1,0 +1,13 @@
+<span class="color-selector__title">Select color</span>
+<div class="color-selector">
+
+
+  <div *ngFor="let color of colors; let i = index" [ngStyle]="{'background-color': '#'+color.hex}"
+       [ngClass]="selectedColor === i ? 'color-selector__item--selected' : ''" class="color-selector__item"
+       (click)="selectColor(i)"></div>
+
+
+
+
+
+</div>

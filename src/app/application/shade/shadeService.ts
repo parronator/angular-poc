@@ -3,6 +3,7 @@ import {Shade} from '../../core/shade/domain/shade';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {EntityState} from '../../shared/application/entity-state';
 
 export interface ShadeState {
   loading: boolean;
