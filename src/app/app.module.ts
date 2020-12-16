@@ -7,16 +7,18 @@ import {TranslateModule} from '@ngx-translate/core';
 import {I18n} from './shared/i18n/i18n';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslationsComponent} from './pages/translations/translations.component';
+import {TranslationsComponent} from './presentation/pages/translations/translations.component';
 import {ShadeFacade} from './core/shade/domain/shadeFacade';
-import {ShadeHttpFacade} from './core/shade/infrastructure/shadeHttpFacade';
-import {ProductFacade} from "./application/product/productFacade";
-import {ProductHttpFacade} from "./core/product/infrastructure/productHttpFacade";
+import {ProductFacade} from './application/product/productFacade';
+import {ProductHttpFacade} from './core/product/infrastructure/productHttpFacade';
+import {ShadeFakeFacade} from './core/shade/infrastructure/shadeFakeFacade';
+import { ShadesComponent } from './presentation/pages/shades/shades.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TranslationsComponent
+    TranslationsComponent,
+    ShadesComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import {ProductHttpFacade} from "./core/product/infrastructure/productHttpFacade
     AppRoutingModule,
   ],
   providers: [
-    {provide: ShadeFacade, useClass: ShadeHttpFacade},
+    {provide: ShadeFacade, useClass: ShadeFakeFacade},
     {provide: ProductFacade, useClass: ProductHttpFacade}
   ],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import { Recipe } from './recipe';
 import {singleRecipeFixture} from '../../../../fixture/recipe';
 import {UniqueId} from '../../shared/uniqueId';
 
-describe('Recipe', () => {
+xdescribe('Recipe', () => {
   it('should create an instance', () => {
     expect(singleRecipeFixture).toBeTruthy();
   });

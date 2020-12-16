@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {SidebarService} from '../../shared/ui/layouts/sidebar-layout/sidebar.service';
+import {SidebarService} from '../../../shared/ui/layouts/sidebar-layout/sidebar.service';
 
 @Component({
   selector: 'app-welcome',

@@ -1,0 +1,16 @@
+<ng-container *ngIf="{
+    entities: shadeService.entities$ | async,
+    loading: shadeService.loading$ | async
+} as data">
+  <ui-sidebar-layout>
+    <ui-search-header header></ui-search-header>
+    <ui-sidebar sidebar></ui-sidebar>
+    <ng-container body>
+      <h1 class="hello-text">Shades</h1>
+      <span *ngIf="showSpinner(data)">Loading...</span>
+      <div *ngIf="showData(data)" style="display: flex; flex-direction: column">
+        <span *ngFor="let entity of data.entities">{{entity.name.value}} - {{entity.color.value}}</span>
+      </div>
+    </ng-container>
+  </ui-sidebar-layout>
+</ng-container>

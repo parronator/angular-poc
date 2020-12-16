@@ -18,7 +18,7 @@ import {TranslateModule} from '@ngx-translate/core';
     {provide: I18n, useClass: I18nService},
     ...I18nService.getGlobalConfiguration()
   ],
-  exports: [UiModule, TranslateModule, FormsModule]
+  exports: [UiModule, TranslateModule, FormsModule, CommonModule]
 })
 export class SharedModule {
 }

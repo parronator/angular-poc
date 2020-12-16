@@ -5,7 +5,7 @@ import {UniqueId} from '../../shared/uniqueId';
 import {CollectionName} from './collectionValueObject';
 
 
-describe('Collection', () => {
+xdescribe('Collection', () => {
   it('should create an instance', () => {
     expect(collectionFixture).toBeTruthy();
   });

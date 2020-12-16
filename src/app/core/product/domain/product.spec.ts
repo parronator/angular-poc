@@ -4,7 +4,7 @@ import {ProductName} from "./productValueObject";
 import {UniqueId} from "../../shared/uniqueId";
 
 
-describe('Product', ()=>{
+xdescribe('Product', ()=>{
   it('should be a valid entity', ()=>{
     expect(productFixture).toBeTruthy();
   });

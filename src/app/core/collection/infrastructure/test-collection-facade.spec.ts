@@ -1,7 +1,7 @@
 import { TestCollectionFacade } from './test-collection-facade';
 import {collectionFixture} from '../../../../fixture/collection';
 
-describe('TestCollectionFacade', () => {
+xdescribe('TestCollectionFacade', () => {
   let facade: TestCollectionFacade;
 
   beforeEach( () => {

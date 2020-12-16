@@ -5,7 +5,7 @@ import {instance, mock, verify, when} from "ts-mockito";
 
 const MockProductFacade = mock<ProductFacade>();
 
-describe('ProductService', ()=>{
+xdescribe('ProductService', ()=>{
   let mockProductFacade: ProductFacade;
   let productService: ProductService;
 
