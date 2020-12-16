@@ -13,6 +13,7 @@ import {ShadeHttpFacade} from './core/shade/infrastructure/shadeHttpFacade';
 
 import {ProductHttpFacade} from "./core/product/infrastructure/productHttpFacade";
 import {ProductFacade} from "./core/product/domain/productFacade";
+import {EntityModule} from "./pages/entity/entity.module";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ProductFacade} from "./core/product/domain/productFacade";
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    EntityModule,
     TranslateModule.forRoot(I18n.getDefaultConfiguration()),
     AppRoutingModule,
   ],
