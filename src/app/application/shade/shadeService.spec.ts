@@ -27,20 +27,22 @@ describe('ShadeService', () => {
   it('should stream the correct state', async () => {
     const data = [shadeFixture, shadeFixture];
     when(MockShadeFacade.getAll()).thenResolve(data);
-    scheduler.run(({expectObservable, hot, cold}) => {
-      cold('a', {
-        a: 'begin',
-      }).subscribe(methodName => {
-        shadeService.loadList();
-      })
-      const expectedMarble = 'abcd|';
-      const expectedState = {
-        a: { ...InitialShadeState },
-        b: { ...InitialShadeState, loading: true },
-        c: { ...InitialShadeState, loading: true, entities: data },
-        d: { ...InitialShadeState, loading: false, entities: data }
-      }
-      expectObservable(shadeService.state$).toBe(expectedMarble, expectedState);
+
+    let currentState = 0;
+    const expectedState: any = {
+      0: {...InitialShadeState},
+      1: {...InitialShadeState, loading: true},
+      2: {...InitialShadeState, loading: true, entities: data},
+      3: {...InitialShadeState, loading: false, entities: data}
+    };
+
+    const subscription = shadeService.state$.subscribe((e) => {
+      expect(e).toEqual(expectedState[currentState]);
+      currentState++;
     });
+
+    await shadeService.loadList();
+    subscription.unsubscribe();
+    verify(MockShadeFacade.getAll()).called();
   });
 });

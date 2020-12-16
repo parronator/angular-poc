@@ -6,7 +6,7 @@ import {collectionFixture} from '../../../fixture/collection';
 
 const MockCollectionFacade = mock<CollectionFacade>();
 
-xdescribe('CollectionService', () => {
+describe('CollectionService', () => {
   let collectionService: CollectionService;
   let mockCollectionFacade: CollectionFacade;
 

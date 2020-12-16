@@ -1,7 +1,8 @@
 import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
 import {Shade} from '../../core/shade/domain/shade';
 import {Injectable} from '@angular/core';
-import {ComponentStore} from '@ngrx/component-store';
+import {BehaviorSubject} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 export interface ShadeState {
   loading: boolean;
@@ -11,14 +12,15 @@ export interface ShadeState {
 export const InitialShadeState: ShadeState = {loading: false, entities: []};
 
 @Injectable({providedIn: 'root'})
-export class ShadeService extends ComponentStore<ShadeState> {
+export class ShadeService {
   constructor(private shadeFacade: ShadeFacade) {
-    super(InitialShadeState);
   }
 
-  readonly state$ = this.select(state => state);
-  readonly entities$ = this.select(state => state.entities);
-  readonly loading$ = this.select(state => state.loading);
+  private st = new BehaviorSubject(InitialShadeState);
+
+  readonly state$ = this.st;
+  readonly entities$ = this.st.pipe(map(state => state.entities));
+  readonly loading$ = this.st.pipe(map(state => state.loading));
 
   async loadList(): Promise<void> {
     this.setLoading(true);
@@ -34,19 +36,18 @@ export class ShadeService extends ComponentStore<ShadeState> {
     this.setLoading(false);
   }
 
-  private setEntities = this.updater((state, shades: Shade[]) => ({
-    ...state,
-    entities: shades,
-  }));
+  private setEntities(shades: Shade[]): void {
+    const currentState = this.st.getValue();
+    this.st.next({...currentState, entities: shades});
+  }
 
-  private addEntity = this.updater((state, shade: Shade) => ({
-    ...state,
-    entities: [...state.entities, shade],
-  }));
+  private addEntity(shade: Shade): void {
+    const currentState = this.st.getValue();
+    this.st.next({...currentState, entities: [...currentState.entities, shade]});
+  }
 
   private setLoading(loading: boolean): void {
-    this.patchState((state) => ({
-      loading
-    }));
+    const currentState = this.st.getValue();
+    this.st.next({...currentState, loading});
   }
 }
