@@ -21,7 +21,7 @@ export class ShadeHttpFacade implements ShadeFacade {
 
   async getAll(): Promise<Shade[]> {
     try {
-      return await this.httpClient.get('/getListOfShades').pipe(
+      return await this.httpClient.get('/api/shades').pipe(
         map((values: any) => values.map((v: any) => Shade.create(v)))
       ).toPromise();
     } catch (e) {

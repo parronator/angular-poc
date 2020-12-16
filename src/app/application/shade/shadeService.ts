@@ -5,8 +5,19 @@ import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {EntityState} from '../../shared/application/entity-state';
 
+export interface ShadeState {
+  loading: boolean;
+  entities: Shade[];
+  error: boolean;
+  newData: Shade[];
+}
 
-export const InitialShadeState: EntityState<Shade> = {loading: false, entities: []};
+export const InitialShadeState: ShadeState = {
+  loading: false,
+  entities: [],
+  error: false,
+  newData: []
+};
 
 @Injectable({providedIn: 'root'})
 export class ShadeService {
