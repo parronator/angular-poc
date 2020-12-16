@@ -1,0 +1,11 @@
+<ui-sidebar-layout>
+  <ui-search-header header></ui-search-header>
+  <ui-sidebar sidebar></ui-sidebar>
+  <ng-container body>
+    <p>color-picker-example works!</p>
+    <form [formGroup]="colorForm" (ngSubmit)="onSubmit()">
+      <ui-color-picker formControlName="shade"></ui-color-picker>
+      <button type="submit">Submit</button>
+    </form>
+  </ng-container>
+</ui-sidebar-layout>

@@ -1,4 +1,4 @@
-﻿import {ProductFacade} from '../../../application/product/productFacade';
+﻿import {ProductFacade} from '../domain/productFacade';
 import {anyString, instance, mock, reset, verify, when} from 'ts-mockito';
 import {ProductHttpError, ProductHttpFacade} from './productHttpFacade';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';

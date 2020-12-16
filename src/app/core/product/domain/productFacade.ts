@@ -1,5 +1,4 @@
-﻿import {Product} from "../../core/product/domain/product";
-import {UniqueId} from "../../shared/domain/uniqueId";
+import {Product} from './product';
 
 export abstract class ProductFacade {
   abstract async getAll(): Promise<Product[]>;

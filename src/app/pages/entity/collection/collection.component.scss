@@ -1,0 +1,16 @@
+.shadePrev{
+  width: 50px;
+  height: 20px;
+}
+
+.collection-table{
+  &__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+  &__icon-button{
+    padding-right: 20px;
+  }
+}

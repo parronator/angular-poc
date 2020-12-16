@@ -9,6 +9,8 @@ export class Recipe {
     private colorId: UniqueId,
     private opacity: number,
     private thickness: number,
+    private engineered: boolean = false,
+    private released: boolean = false,
     // private quality: number,
     // spectralData: yyy
     // measurementCondition: yyy
@@ -35,9 +37,15 @@ export class Recipe {
   public get Thickness(): number{
     return this.thickness;
   }
+  public get Engineered(): boolean{
+    return this.engineered;
+  }
+  public get Released(): boolean{
+    return this.released;
+  }
 
   static create({id, sourceId, sourceName, colorId, opacity, thickness }: any): Recipe{
-    return new Recipe(UniqueId.create(id), UniqueId.create(sourceId), sourceName,  UniqueId.create(colorId), opacity, thickness)
+    return new Recipe(UniqueId.create(id), UniqueId.create(sourceId), sourceName,  UniqueId.create(colorId), opacity, thickness);
   }
 
 }

@@ -1,7 +1,7 @@
-﻿import {productFixture} from '../../../fixture/product';
+import {productFixture} from '../../../fixture/product';
 import {ProductService} from './productService';
-import {ProductFacade} from './productFacade';
 import {instance, mock, verify, when} from 'ts-mockito';
+import {ProductFacade} from '../../core/product/domain/productFacade';
 
 const MockProductFacade = mock<ProductFacade>();
 

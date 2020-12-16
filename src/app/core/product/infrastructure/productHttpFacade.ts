@@ -1,14 +1,14 @@
-﻿import {ProductFacade} from '../../../application/product/productFacade';
 import {Product} from '../domain/product';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
+import {ProductFacade} from '../domain/productFacade';
 
 export class ProductHttpError {
 }
 
 @Injectable()
-export class ProductHttpFacade implements ProductFacade{
+export class ProductHttpFacade implements ProductFacade {
   constructor(private httpClient: HttpClient) {
   }
 
@@ -18,8 +18,7 @@ export class ProductHttpFacade implements ProductFacade{
         .pipe(
           map((values: any) => values.map((v: any) => Product.create(v)))
         ).toPromise();
-    }
-    catch (e){
+    } catch (e) {
       throw new ProductHttpError();
     }
   }
@@ -36,7 +35,7 @@ export class ProductHttpFacade implements ProductFacade{
     try {
       return await this.httpClient.get('/getProductById?id=' + id)
         .pipe(
-          map((values: any)  => Product.create(values))
+          map((values: any) => Product.create(values))
         ).toPromise();
     } catch (e) {
       throw new ProductHttpError();

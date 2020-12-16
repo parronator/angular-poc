@@ -19,10 +19,19 @@ import {SearchHeaderComponent} from './components/search-header/search-header.co
 import {NzInputModule} from 'ng-zorro-antd/input';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import {CommonModule} from '@angular/common';
+import { ColorPickerComponent } from './components/form-components/color-picker/color-picker.component';
+import { ColorPickerExampleComponent } from './examples/color-picker-example/color-picker-example.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {NzTableModule} from "ng-zorro-antd/table";
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 
 @NgModule({
   imports: [
     CommonModule,
+    NzCheckboxModule,
+    NzButtonModule,
+    NzTableModule,
     NzLayoutModule,
     NzMenuModule,
     NzIconModule,
@@ -32,10 +41,14 @@ import {CommonModule} from '@angular/common';
     NzGridModule,
     NzDividerModule,
     UIRoutingModule,
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule
   ],
   exports: [
+    NzButtonModule,
+    NzCheckboxModule,
     NzLayoutModule,
+    NzTableModule,
     NzMenuModule,
     NzIconModule,
     NzSelectModule,
@@ -49,7 +62,8 @@ import {CommonModule} from '@angular/common';
     SidebarLayoutComponent,
     SearchHeaderComponent,
     RouterModule,
-    LayoutExamplesComponent
+    LayoutExamplesComponent,
+    ColorPickerComponent
   ],
   providers: [
     {provide: NZ_ICONS, useValue: iconList}
@@ -62,7 +76,9 @@ import {CommonModule} from '@angular/common';
     HeaderOnlyLayoutComponent,
     HeaderComponent,
     LayoutExamplesComponent,
-    SearchHeaderComponent
+    SearchHeaderComponent,
+    ColorPickerComponent,
+    ColorPickerExampleComponent
   ]
 })
 export class UiModule {

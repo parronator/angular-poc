@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HeaderExamplesComponent} from './examples/header-examples/header-examples.component';
 import {LayoutExamplesComponent} from './examples/layout-examples/layout-examples.component';
+import {ColorPickerExampleComponent} from './examples/color-picker-example/color-picker-example.component';
+import {CollectionExampleComponent} from '../../pages/entity/collection-example/collection-example.component';
 
 const routes: Routes = [
   {path: 'headers', component: HeaderExamplesComponent},
-  {path: 'layouts', component: LayoutExamplesComponent}
+  {path: 'layouts', component: LayoutExamplesComponent},
+  {path: 'color', component: ColorPickerExampleComponent},
+
 ];
 
 @NgModule({
