@@ -7,7 +7,7 @@ import {of} from 'rxjs';
 
 const MockHttpClient = mock<HttpClient>();
 
-describe('CollectionHttpFacade', () => {
+xdescribe('CollectionHttpFacade', () => {
   let facade: CollectionFacade;
   let mockHttpClient: HttpClient;
 

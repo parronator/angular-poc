@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'translations', component: TranslationsComponent },
   { path: 'shades', component: ShadesComponent },
   {path: 'collectionExample', component: CollectionExampleComponent},
-
 ];
 
 @NgModule({
