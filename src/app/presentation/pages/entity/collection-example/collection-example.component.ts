@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {collectionFixture} from '../../../../fixture/collection';
+import {collectionFixture} from '../../../../../fixture/collection';
 
 @Component({
   selector: 'app-collection-example',
