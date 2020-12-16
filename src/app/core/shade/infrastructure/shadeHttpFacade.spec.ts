@@ -30,16 +30,16 @@ describe('ShadeHttpFacade', () => {
 
   describe('getList', () => {
     it('should return Shade list when http call success on proper url', async () => {
-      when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixture));
+      when(MockHttpClient.get(anyString())).thenReturn(of([shadeJSONFixture[0]]));
       const result = await facade.getAll();
-      verify(MockHttpClient.get('/getListOfShades')).called();
+      verify(MockHttpClient.get('/api/shades')).called();
       expect(result).toEqual([shadeFixture]);
     });
 
     it('should throw an error when http call is failing', async () => {
       when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.getAll();
-      verify(MockHttpClient.get('/getListOfShades')).called();
+      verify(MockHttpClient.get('/api/shades')).called();
       await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeGetAllHttpError));
     });
   });

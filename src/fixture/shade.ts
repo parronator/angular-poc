@@ -1,13 +1,38 @@
 import {Shade} from '../app/core/shade/domain/shade';
 import {ShadeColor, ShadeName} from '../app/core/shade/domain/shadeValueObject';
-import {UniqueId} from "../app/shared/domain/uniqueId";
+import {UniqueId} from '../app/shared/domain/uniqueId';
 
 export const shadeFixture = new Shade(UniqueId.create('1'), ShadeColor.create('blue'), ShadeName.create('blue shade'));
-export const shadeJSONFixture = [{
-  id: '1',
-  name: 'blue shade',
-  color: 'blue'
-}];
+export const shadeJSONFixture = [
+  {
+    id: '1',
+    name: 'blue shade',
+    color: 'blue'
+  }, {
+    id: '4',
+    name: 'yellow shade',
+    color: 'yellow'
+  },
+  {
+    id: '2',
+    name: 'red shade',
+    color: 'red'
+  },
+  {
+    id: '3',
+    name: 'green shade',
+    color: 'green'
+  },
+  {
+    id: '5',
+    name: 'pink shade',
+    color: 'pink'
+  },
+  {
+    id: '6',
+    name: 'crimson shade',
+    color: 'crimson'
+  }];
 export const shadeListFixturePage1 = [
   new Shade(UniqueId.create('1'), ShadeColor.create('blue'), ShadeName.create('blue shade')),
   new Shade(UniqueId.create('2'), ShadeColor.create('red'), ShadeName.create('red shade')),

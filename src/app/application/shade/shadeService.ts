@@ -7,9 +7,16 @@ import {map} from 'rxjs/operators';
 export interface ShadeState {
   loading: boolean;
   entities: Shade[];
+  error: boolean;
+  newData: Shade[];
 }
 
-export const InitialShadeState: ShadeState = {loading: false, entities: []};
+export const InitialShadeState: ShadeState = {
+  loading: false,
+  entities: [],
+  error: false,
+  newData: []
+};
 
 @Injectable({providedIn: 'root'})
 export class ShadeService {
