@@ -1,13 +1,12 @@
-import { Recipe } from './recipe';
+import {Recipe} from './recipe';
 import {singleRecipeFixture} from '../../../../fixture/recipe';
-import {UniqueId} from '../../shared/uniqueId';
 
-xdescribe('Recipe', () => {
+describe('Recipe', () => {
   it('should create an instance', () => {
     expect(singleRecipeFixture).toBeTruthy();
   });
   it('should throw an error when ids are invalid', () => {
-    expect( () => Recipe.create(  {
+    expect(() => Recipe.create({
       id: '',
       sourceId: 'any',
       sourceName: 'any',
@@ -15,7 +14,7 @@ xdescribe('Recipe', () => {
       opacity: 11.34,
       thickness: 11.234
     })).toThrow();
-    expect( () => Recipe.create(  {
+    expect(() => Recipe.create({
       id: 'any',
       sourceId: '',
       sourceName: 'any',
@@ -23,7 +22,7 @@ xdescribe('Recipe', () => {
       opacity: 11.34,
       thickness: 11.234
     })).toThrow();
-    expect( () => Recipe.create(  {
+    expect(() => Recipe.create({
       id: 'any',
       sourceId: 'any',
       sourceName: 'any',

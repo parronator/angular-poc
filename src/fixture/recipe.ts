@@ -1,5 +1,5 @@
 import {Recipe} from '../app/core/recipe/domain/recipe';
-import {UniqueId} from '../app/core/shared/uniqueId';
+import {UniqueId} from '../app/shared/domain/uniqueId';
 
 export const singleJsonRecipeFixture = {
     id: 'recipeId1',

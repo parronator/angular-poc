@@ -1,4 +1,4 @@
-﻿import {ValueObject} from "../../shared/valueObject";
+﻿import {ValueObject} from "../../../shared/domain/valueObject";
 
 export class ProductName implements ValueObject{
   static minLength = 1;

@@ -1,11 +1,11 @@
 import { Collection } from './collection';
 import {collectionFixture} from '../../../../fixture/collection';
 
-import {UniqueId} from '../../shared/uniqueId';
+import {UniqueId} from '../../../shared/domain/uniqueId';
 import {CollectionName} from './collectionValueObject';
 
 
-xdescribe('Collection', () => {
+describe('Collection', () => {
   it('should create an instance', () => {
     expect(collectionFixture).toBeTruthy();
   });

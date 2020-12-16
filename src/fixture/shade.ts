@@ -1,6 +1,6 @@
 import {Shade} from '../app/core/shade/domain/shade';
 import {ShadeColor, ShadeName} from '../app/core/shade/domain/shadeValueObject';
-import {UniqueId} from "../app/core/shared/uniqueId";
+import {UniqueId} from "../app/shared/domain/uniqueId";
 
 export const shadeFixture = new Shade(UniqueId.create('1'), ShadeColor.create('blue'), ShadeName.create('blue shade'));
 export const shadeJSONFixture = [{

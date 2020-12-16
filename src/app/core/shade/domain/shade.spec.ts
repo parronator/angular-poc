@@ -1,9 +1,9 @@
 import {Shade} from './shade';
 import {ShadeColor, ShadeName} from './shadeValueObject';
 import {shadeFixture} from '../../../../fixture/shade';
-import {UniqueId} from '../../shared/uniqueId';
+import {UniqueId} from '../../../shared/domain/uniqueId';
 
-xdescribe('Shade', () => {
+describe('Shade', () => {
   it('should be a valid entity', () => {
 
     expect(shadeFixture).toBeTruthy();

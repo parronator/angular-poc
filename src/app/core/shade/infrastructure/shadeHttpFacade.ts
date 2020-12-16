@@ -3,9 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import {Shade} from '../domain/shade';
 import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
-
-export class ShadeHttpError {
-}
+import {
+  ShadeGetAllHttpError,
+  ShadeGetByCollectionIdAsPageHttpError,
+  ShadeGetByCollectionIdHttpError,
+  ShadeGetByIdHttpError
+} from '../domain/exceptions';
 
 @Injectable()
 export class ShadeHttpFacade implements ShadeFacade {
@@ -18,12 +21,11 @@ export class ShadeHttpFacade implements ShadeFacade {
 
   async getAll(): Promise<Shade[]> {
     try {
-      return await this.httpClient.get('/getListOfShades')
-        .pipe(
-          map((values: any) => values.map((v: any) => Shade.create(v)))
-        ).toPromise();
+      return await this.httpClient.get('/getListOfShades').pipe(
+        map((values: any) => values.map((v: any) => Shade.create(v)))
+      ).toPromise();
     } catch (e) {
-      throw new ShadeHttpError();
+      throw new ShadeGetAllHttpError();
     }
   }
 
@@ -31,18 +33,15 @@ export class ShadeHttpFacade implements ShadeFacade {
     try {
       return await this.httpClient.get(`/shades?id=${id}`)
         .pipe(
-          map((values: any)  => {
-            console.log(values);
-            return Shade.create(values);
-          })
+          map((values: any) => Shade.create(values))
         ).toPromise();
     } catch (e) {
-      throw new ShadeHttpError();
+      throw new ShadeGetByIdHttpError();
     }
   }
 
-  async getShadesByCollectionId(collectionId: string): Promise<Shade[]>{
-    throw new ShadeHttpError();
+  async getShadesByCollectionId(collectionId: string): Promise<Shade[]> {
+    throw new ShadeGetByCollectionIdHttpError();
   }
 
   async getShadesByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]> {
@@ -52,7 +51,7 @@ export class ShadeHttpFacade implements ShadeFacade {
           map((values: any) => values.map((v: any) => Shade.create(v)))
         ).toPromise();
     } catch (e) {
-      throw new ShadeHttpError();
+      throw new ShadeGetByCollectionIdAsPageHttpError();
     }
   }
 }

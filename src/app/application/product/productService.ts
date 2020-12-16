@@ -1,6 +1,6 @@
 ﻿import {Product} from "../../core/product/domain/product";
 import {ProductFacade} from "./productFacade";
-import {UniqueId} from "../../core/shared/uniqueId";
+import {UniqueId} from "../../shared/domain/uniqueId";
 
 export class ProductService{
   constructor(private productFacade:ProductFacade){

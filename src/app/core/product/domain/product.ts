@@ -1,4 +1,4 @@
-﻿import {UniqueId} from "../../shared/uniqueId";
+﻿import {UniqueId} from "../../../shared/domain/uniqueId";
 import {ProductName} from "./productValueObject";
 
 export class Product{

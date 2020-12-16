@@ -10,11 +10,12 @@ import {
   shadeListFixturePage2
 } from '../../../../fixture/shade';
 import {of} from 'rxjs';
-import {ShadeHttpError, ShadeHttpFacade} from './shadeHttpFacade';
+import {ShadeHttpFacade} from './shadeHttpFacade';
+import {ShadeGetAllHttpError, ShadeGetByCollectionIdAsPageHttpError} from '../domain/exceptions';
 
 const MockHttpClient = mock<HttpClient>();
 
-xdescribe('ShadeHttpFacade', () => {
+describe('ShadeHttpFacade', () => {
   let facade: ShadeFacade;
   let mockHttpClient: HttpClient;
 
@@ -36,13 +37,11 @@ xdescribe('ShadeHttpFacade', () => {
     });
 
     it('should throw an error when http call is failing', async () => {
-      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.getAll();
       verify(MockHttpClient.get('/getListOfShades')).called();
-      await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeHttpError));
+      await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeGetAllHttpError));
     });
-
-
   });
 
   describe('get page', () => {
@@ -62,12 +61,12 @@ xdescribe('ShadeHttpFacade', () => {
     });
 
     it('should throw an error when http call is failing while retrieving a page', async () => {
-      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const collectionId = 'any';
       const page = 1;
       const call = facade.getShadesByCollectionIdAsPage(collectionId, page);
       verify(MockHttpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)).called();
-      await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeHttpError));
+      await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeGetByCollectionIdAsPageHttpError));
     });
   });
 

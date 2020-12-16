@@ -1,4 +1,4 @@
-import {ValueObject} from '../../shared/valueObject';
+import {ValueObject} from '../../../shared/domain/valueObject';
 
 
 export class ShadeColor implements ValueObject {

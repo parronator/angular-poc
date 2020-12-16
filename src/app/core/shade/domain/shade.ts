@@ -1,5 +1,5 @@
 import {ShadeColor, ShadeName} from './shadeValueObject';
-import {UniqueId} from '../../shared/uniqueId';
+import {UniqueId} from '../../../shared/domain/uniqueId';
 
 export class Shade {
   constructor(id: UniqueId, public color: ShadeColor, public name: ShadeName) {

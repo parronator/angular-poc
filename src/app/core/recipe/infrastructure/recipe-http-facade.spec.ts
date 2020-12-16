@@ -12,7 +12,7 @@ import {of} from 'rxjs';
 
 const MockHttpClient = mock<HttpClient>();
 
-xdescribe('RecipeHttpFacade', () => {
+describe('RecipeHttpFacade', () => {
   let facade: RecipeFacade;
   let mockHttpClient: HttpClient;
 
@@ -34,7 +34,7 @@ xdescribe('RecipeHttpFacade', () => {
     });
 
     it('should throw an error when http call is failing', async () => {
-      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.getAllRecipes();
       verify(MockHttpClient.get(RecipeHttpFacade.recipeUrl)).called();
       await expectAsync(call).toBeRejectedWith(jasmine.any(RecipeHttpError));
@@ -50,7 +50,7 @@ xdescribe('RecipeHttpFacade', () => {
     });
 
     it('should throw an error when http call is failing', async () => {
-      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.getRecipeById('1');
       verify(MockHttpClient.get(RecipeHttpFacade.recipeUrl + '?recipeId')).called();
       await expectAsync(call).toBeRejectedWith(jasmine.any(RecipeHttpError));

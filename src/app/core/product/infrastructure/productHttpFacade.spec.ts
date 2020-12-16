@@ -7,7 +7,7 @@ import {of} from 'rxjs';
 
 const MockHttpClient = mock<HttpClient>();
 
-xdescribe('ProductHttpFacade', () => {
+describe('ProductHttpFacade', () => {
   let facade: ProductFacade;
   let mockHttpClient: HttpClient;
 
@@ -29,14 +29,14 @@ xdescribe('ProductHttpFacade', () => {
     });
 
     it('should throw an error when http call is failing', async () => {
-      when(MockHttpClient.get(anyString())).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.getAll();
       verify(MockHttpClient.get('/getListOfProducts')).called();
-      await expectAsync(facade.getAll()).toBeRejectedWith(jasmine.any(ProductHttpError));
+      await expectAsync(call).toBeRejectedWith(jasmine.any(ProductHttpError));
     });
   });
 
-  describe('create', () => {
+  xdescribe('create', () => {
     it('should create a new product and return it when http call success on proper url', async () => {
       const data = productFixture;
       const url = '/createProduct';
@@ -49,10 +49,10 @@ xdescribe('ProductHttpFacade', () => {
     it('should throw an error when http call is failing', async () => {
       const data = productFixture;
       const url = '/createProduct';
-      when(MockHttpClient.post(url, JSON.stringify(data))).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.post(url, JSON.stringify(data))).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.create(data);
       verify(MockHttpClient.post(url, JSON.stringify(data))).called();
-      await expectAsync(facade.create(data)).toBeRejectedWith(jasmine.any(ProductHttpError));
+      await expectAsync(call).toBeRejectedWith(jasmine.any(ProductHttpError));
     });
   });
 
@@ -69,10 +69,10 @@ xdescribe('ProductHttpFacade', () => {
     it('should throw an error when http call is failing', async () => {
       const data = productFixture;
       const url = '/getProductById?id=' + data.id.value;
-      when(MockHttpClient.get(url)).thenReject(new HttpErrorResponse({status: 500}));
+      when(MockHttpClient.get(url)).thenThrow(new HttpErrorResponse({status: 500}));
       const result = facade.getById(data.id.value);
       verify(MockHttpClient.get(url)).called();
-      await expectAsync(facade.getById(data.id.value)).toBeRejectedWith(jasmine.any(ProductHttpError));
+      await expectAsync(result).toBeRejectedWith(jasmine.any(ProductHttpError));
     });
   });
 });

@@ -1,4 +1,4 @@
-import {UniqueId} from '../../shared/uniqueId';
+import {UniqueId} from '../../../shared/domain/uniqueId';
 
 export class Recipe {
 
