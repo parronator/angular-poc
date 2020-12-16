@@ -3,13 +3,10 @@ import {Shade} from '../../core/shade/domain/shade';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {EntityState} from '../../shared/application/entity-state';
 
-export interface ShadeState {
-  loading: boolean;
-  entities: Shade[];
-}
 
-export const InitialShadeState: ShadeState = {loading: false, entities: []};
+export const InitialShadeState: EntityState<Shade> = {loading: false, entities: []};
 
 @Injectable({providedIn: 'root'})
 export class ShadeService {
