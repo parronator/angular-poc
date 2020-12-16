@@ -2,7 +2,7 @@
 import {anyString, instance, mock, reset, verify, when} from 'ts-mockito';
 import {ProductHttpError, ProductHttpFacade} from './productHttpFacade';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {productFixture, productJSONFixture} from '../../../../fixture/product';
+import {singleProductFixture, productJSONFixture} from '../../../../fixture/product';
 import {of} from 'rxjs';
 
 const MockHttpClient = mock<HttpClient>();
@@ -25,7 +25,7 @@ describe('ProductHttpFacade', () => {
       when(MockHttpClient.get(anyString())).thenReturn(of(productJSONFixture));
       const result = await facade.getAll();
       verify(MockHttpClient.get('/getListOfProducts')).called();
-      expect(result).toEqual([productFixture]);
+      expect(result).toEqual([singleProductFixture]);
     });
 
     it('should throw an error when http call is failing', async () => {
@@ -38,16 +38,16 @@ describe('ProductHttpFacade', () => {
 
   xdescribe('create', () => {
     it('should create a new product and return it when http call success on proper url', async () => {
-      const data = productFixture;
+      const data = singleProductFixture;
       const url = '/createProduct';
       when(MockHttpClient.post(url, JSON.stringify(data))).thenReturn(of(data));
       const result = await facade.create(data);
       verify(MockHttpClient.post(url, JSON.stringify(data))).called();
-      expect(result).toEqual(productFixture);
+      expect(result).toEqual(singleProductFixture);
     });
 
     it('should throw an error when http call is failing', async () => {
-      const data = productFixture;
+      const data = singleProductFixture;
       const url = '/createProduct';
       when(MockHttpClient.post(url, JSON.stringify(data))).thenThrow(new HttpErrorResponse({status: 500}));
       const call = facade.create(data);
@@ -58,16 +58,16 @@ describe('ProductHttpFacade', () => {
 
   describe('getById', () => {
     it('should return the selected Product when http call success on proper url', async () => {
-      const data = productFixture;
+      const data = singleProductFixture;
       const url = '/getProductById?id=' + data.id.value;
       when(MockHttpClient.get(url)).thenReturn(of(productJSONFixture[0]));
       const result = await facade.getById(data.id.value);
       verify(MockHttpClient.get(url)).called();
-      expect(result).toEqual(productFixture);
+      expect(result).toEqual(singleProductFixture);
     });
 
     it('should throw an error when http call is failing', async () => {
-      const data = productFixture;
+      const data = singleProductFixture;
       const url = '/getProductById?id=' + data.id.value;
       when(MockHttpClient.get(url)).thenThrow(new HttpErrorResponse({status: 500}));
       const result = facade.getById(data.id.value);

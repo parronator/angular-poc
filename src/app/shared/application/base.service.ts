@@ -14,14 +14,14 @@ export abstract class BaseService<T> {
   readonly entities$ = this.st.pipe(map(state => state.entities));
   readonly loading$ = this.st.pipe(map(state => state.loading));
 
-  protected setEntities(shades: T[]): void {
+  protected setEntities(objects: T[]): void {
     const currentState = this.st.getValue();
-    this.st.next({...currentState, entities: shades});
+    this.st.next({...currentState, entities: objects});
   }
 
-  protected addEntity(shade: T): void {
+  protected addEntity(object: T): void {
     const currentState = this.st.getValue();
-    this.st.next({...currentState, entities: [...currentState.entities, shade]});
+    this.st.next({...currentState, entities: [...currentState.entities, object]});
   }
 
   protected setLoading(loading: boolean): void {

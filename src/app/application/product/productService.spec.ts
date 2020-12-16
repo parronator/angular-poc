@@ -1,4 +1,4 @@
-import {productFixture} from '../../../fixture/product';
+import {singleProductFixture} from '../../../fixture/product';
 import {ProductService} from './productService';
 import {instance, mock, verify, when} from 'ts-mockito';
 import {ProductFacade} from '../../core/product/domain/productFacade';
@@ -7,34 +7,73 @@ const MockProductFacade = mock<ProductFacade>();
 
 describe('ProductService', () => {
   let mockProductFacade: ProductFacade;
-  let productService: ProductService;
+  let service: ProductService;
 
   beforeEach(() => {
     mockProductFacade = instance(MockProductFacade);
-    productService = new ProductService(mockProductFacade);
+    service = new ProductService(mockProductFacade);
   });
 
   it('should get list of products', async () => {
-    const data = [productFixture, productFixture];
+    const data = [singleProductFixture, singleProductFixture];
     when(MockProductFacade.getAll()).thenResolve(data);
-    const response = await productService.getList();
-    expect(response).toEqual(data);
+    //TODO: Discuss how to extract this test so that it can be reused.
+    let currentState = 0;
+    const expectedState: any = {
+      0: {...service.InitialEntityState},
+      1: {...service.InitialEntityState, loading: true},
+      2: {...service.InitialEntityState, loading: true, entities: data},
+      3: {...service.InitialEntityState, loading: false, entities: data}
+    };
+
+    const subscription = service.state$.subscribe((e) => {
+      expect(e).toEqual(expectedState[currentState]);
+      currentState++;
+    });
+
+    await service.getAllProducts();
     verify(MockProductFacade.getAll()).called();
   });
 
   it('should create a new product', async () => {
-    const data = productFixture;
-    when(MockProductFacade.create(data)).thenResolve(data);
-    const response = await productService.create(data);
-    expect(response).toEqual(data);
-    verify(MockProductFacade.create(data)).called();
+    const singleProduct = singleProductFixture;
+    when(MockProductFacade.create(singleProduct)).thenResolve(singleProduct);
+
+    let currentState = 0;
+    const expectedState: any = {
+      0: {...service.InitialEntityState},
+      1: {...service.InitialEntityState, loading: true},
+      2: {...service.InitialEntityState, loading: true, entities: [singleProduct]},
+      3: {...service.InitialEntityState, loading: false, entities: [singleProduct]}
+    };
+
+    const subscription = service.state$.subscribe((e) => {
+      expect(e).toEqual(expectedState[currentState]);
+      currentState++;
+    });
+
+    await service.createProduct(singleProduct);
+    verify(MockProductFacade.create(singleProduct)).called();
   });
 
   it('should get a product by ID', async () => {
-    const data = productFixture;
-    when(MockProductFacade.getById(data.id.value)).thenResolve(data);
-    const response = await productService.getById(productFixture.id);
-    expect(response).toEqual(data);
-    verify(MockProductFacade.getById(data.id.value)).called();
+    const singleProduct = singleProductFixture;
+    when(MockProductFacade.getById(singleProduct.id.value)).thenResolve(singleProduct);
+
+    let currentState = 0;
+    const expectedState: any = {
+      0: {...service.InitialEntityState},
+      1: {...service.InitialEntityState, loading: true},
+      2: {...service.InitialEntityState, loading: true, entities: [singleProduct]},
+      3: {...service.InitialEntityState, loading: false, entities: [singleProduct]}
+    };
+
+    const subscription = service.state$.subscribe((e) => {
+      expect(e).toEqual(expectedState[currentState]);
+      currentState++;
+    });
+
+    await service.getProductById(singleProductFixture.id);
+    verify(MockProductFacade.getById(singleProduct.id.value)).called();
   });
 });

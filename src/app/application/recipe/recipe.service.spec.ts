@@ -9,13 +9,13 @@ import {TestScheduler} from 'rxjs/testing';
 const MockRecipeFacade = mock<RecipeFacade>();
 
 describe('RecipeService', () => {
-  let recipeService: RecipeService;
+  let service: RecipeService;
   let mockRecipeFacade: RecipeFacade;
   let scheduler: TestScheduler;
 
   beforeEach(() => {
     mockRecipeFacade = instance(MockRecipeFacade);
-    recipeService = new RecipeService(mockRecipeFacade);
+    service = new RecipeService(mockRecipeFacade);
     scheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
     });
@@ -30,18 +30,18 @@ describe('RecipeService', () => {
 
     let currentState = 0;
     const expectedState: any = {
-      0: {...recipeService.InitialEntityState},
-      1: {...recipeService.InitialEntityState, loading: true},
-      2: {...recipeService.InitialEntityState, loading: true, entities: data},
-      3: {...recipeService.InitialEntityState, loading: false, entities: data}
+      0: {...service.InitialEntityState},
+      1: {...service.InitialEntityState, loading: true},
+      2: {...service.InitialEntityState, loading: true, entities: data},
+      3: {...service.InitialEntityState, loading: false, entities: data}
     };
 
-    const subscription = recipeService.state$.subscribe((e) => {
+    const subscription = service.state$.subscribe((e) => {
       expect(e).toEqual(expectedState[currentState]);
       currentState++;
     });
 
-    await recipeService.getAllRecipes();
+    await service.getAllRecipes();
     verify(MockRecipeFacade.getAllRecipes()).called();
   });
 });
