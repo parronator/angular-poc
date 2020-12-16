@@ -26,6 +26,7 @@ import {NzTableModule} from "ng-zorro-antd/table";
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -63,7 +64,7 @@ import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
     SearchHeaderComponent,
     RouterModule,
     LayoutExamplesComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
   ],
   providers: [
     {provide: NZ_ICONS, useValue: iconList}
