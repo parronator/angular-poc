@@ -19,6 +19,11 @@ export abstract class BaseService<T> {
     this.st.next({...currentState, entities: objects});
   }
 
+  protected setEntity(object: T): void {
+    const currentState = this.st.getValue();
+    this.st.next({...currentState, entities: [object]});
+  }
+
   protected addEntity(object: T): void {
     const currentState = this.st.getValue();
     this.st.next({...currentState, entities: [...currentState.entities, object]});

@@ -22,7 +22,7 @@ export class CollectionComponent implements OnInit {
 
   loadInitialProducts(): void{
     const promise = this.productService.getAllProducts();
-    promise.then((products) => { this.products = products; });
+    //promise.then((products) => { this.products = products; });
   }
 
   findRecipe(shadeId: string): Recipe{
