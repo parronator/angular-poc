@@ -14,7 +14,6 @@ export class CollectionComponent implements OnInit {
 
   products: Product[];
 
-
   constructor(private productService: ProductService) { this.products = []; }
 
   ngOnInit(): void {
@@ -22,7 +21,7 @@ export class CollectionComponent implements OnInit {
   }
 
   loadInitialProducts(): void{
-    const promise = this.productService.getList();
+    const promise = this.productService.getAllProducts();
     promise.then((products) => { this.products = products; });
   }
 

@@ -1,4 +1,4 @@
-﻿import {productFixture} from '../../../../fixture/product';
+﻿import {singleProductFixture} from '../../../../fixture/product';
 import {Product} from './product';
 import {ProductName} from './productValueObject';
 import {UniqueId} from '../../../shared/domain/uniqueId';
@@ -6,7 +6,7 @@ import {UniqueId} from '../../../shared/domain/uniqueId';
 
 describe('Product', () => {
   it('should be a valid entity', () => {
-    expect(productFixture).toBeTruthy();
+    expect(singleProductFixture).toBeTruthy();
   });
 
 
