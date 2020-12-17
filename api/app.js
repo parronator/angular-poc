@@ -1,12 +1,18 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
-var shade_1 = require("../src/fixture/shade");
+var body_parser_1 = __importDefault(require("body-parser"));
+var shadeController_1 = require("./controllers/shadeController");
 var app = express();
-app.get('/shades', function (req, res) {
-    res.status(200);
-    res.json(shade_1.shadeJSONFixturePage1);
-});
+var router = express.Router();
+router.get('/shades', shadeController_1.findAll);
+router.get('/shades/:id', shadeController_1.findOne);
+app.use(body_parser_1.default.json());
+app.use(body_parser_1.default.urlencoded({ extended: false }));
+app.use('/', router);
 app.listen(3000, function () {
     console.log('App is listening on port 3000!');
 });

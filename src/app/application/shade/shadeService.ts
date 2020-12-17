@@ -2,21 +2,18 @@ import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
 import {Shade} from '../../core/shade/domain/shade';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {EntityState} from '../../shared/application/entity-state';
+import {pluck} from 'rxjs/operators';
 
 export interface ShadeState {
   loading: boolean;
   entities: Shade[];
   error: boolean;
-  newData: Shade[];
 }
 
 export const InitialShadeState: ShadeState = {
   loading: false,
   entities: [],
   error: false,
-  newData: []
 };
 
 @Injectable({providedIn: 'root'})
@@ -27,13 +24,23 @@ export class ShadeService {
   private st = new BehaviorSubject(InitialShadeState);
 
   readonly state$ = this.st;
-  readonly entities$ = this.st.pipe(map(state => state.entities));
-  readonly loading$ = this.st.pipe(map(state => state.loading));
+  readonly entities$ = this.st.pipe(pluck('entities'));
+  readonly loading$ = this.st.pipe(pluck('loading'));
+  readonly error$ = this.st.pipe(pluck('error'));
 
   async loadList(): Promise<void> {
     this.setLoading(true);
-    const shades = await this.shadeFacade.getAll();
-    this.setEntities(shades);
+    try {
+      const shades = await this.shadeFacade.getAll();
+
+      // Testing purposes ------------
+      const shade = await this.shadeFacade.getShadeById('2');
+      console.log(shade);
+      // -----------------------------
+      this.setEntities(shades);
+    } catch (e) {
+      this.setError();
+    }
     this.setLoading(false);
   }
 
@@ -56,6 +63,15 @@ export class ShadeService {
 
   private setLoading(loading: boolean): void {
     const currentState = this.st.getValue();
-    this.st.next({...currentState, loading});
+    if (loading) {
+      this.st.next({...currentState, loading, error: false});
+    } else {
+      this.st.next({...currentState, loading});
+    }
+  }
+
+  private setError(): void {
+    const currentState = this.st.getValue();
+    this.st.next({...currentState, error: true});
   }
 }
