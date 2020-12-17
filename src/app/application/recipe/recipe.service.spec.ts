@@ -42,6 +42,7 @@ describe('RecipeService', () => {
     });
 
     await service.getAllRecipes();
+    subscription.unsubscribe();
     verify(MockRecipeFacade.getAllRecipes()).called();
   });
 });

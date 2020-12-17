@@ -53,6 +53,7 @@ describe('ProductService', () => {
     });
 
     await service.createProduct(singleProduct);
+    subscription.unsubscribe();
     verify(MockProductFacade.create(singleProduct)).called();
   });
 
@@ -74,6 +75,7 @@ describe('ProductService', () => {
     });
 
     await service.getProductById(singleProductFixture.id);
+    subscription.unsubscribe();
     verify(MockProductFacade.getById(singleProduct.id.value)).called();
   });
 });

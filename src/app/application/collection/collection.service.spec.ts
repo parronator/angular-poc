@@ -43,6 +43,7 @@ describe('CollectionService', () => {
     });
 
     await collectionService.getAllCollections();
+    subscription.unsubscribe();
     verify(MockCollectionFacade.getAllCollections()).called();
   });
 });

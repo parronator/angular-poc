@@ -18,7 +18,7 @@ export class CollectionService extends BaseService<Collection> {
   async getCollectionById(id: string): Promise<void> {
     this.setLoading(true);
     const shade = await this.collectionFacade.getCollectionByID(id);
-    this.setEntities([shade]);
+    this.setEntity(shade);
     this.setLoading(false);
   }
 
