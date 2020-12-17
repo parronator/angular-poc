@@ -31,7 +31,7 @@ export class ShadeHttpFacade implements ShadeFacade {
 
   async getShadeById(id: string): Promise<Shade> {
     try {
-      return await this.httpClient.get(`/shades?id=${id}`)
+      return await this.httpClient.get(`/api/shades/${id}`)
         .pipe(
           map((values: any) => Shade.create(values))
         ).toPromise();

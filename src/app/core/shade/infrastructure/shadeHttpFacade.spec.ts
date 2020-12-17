@@ -74,7 +74,7 @@ describe('ShadeHttpFacade', () => {
     it('should return a single shade when retriving a single shade', async () => {
       when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixture[0]));
       const result = await facade.getShadeById('1');
-      verify(MockHttpClient.get('/shades?id=1')).called();
+      verify(MockHttpClient.get('/api/shades/1')).called();
       expect(result).toEqual(shadeFixture);
     });
   });
