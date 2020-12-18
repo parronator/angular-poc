@@ -2,8 +2,8 @@
 import {anything, instance, mock, reset, verify, when} from 'ts-mockito';
 import {shadeFixture} from '../../../fixture/shade';
 import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
-import {InitialShadeState, ShadeService} from './shadeService';
 import {TestScheduler} from 'rxjs/testing';
+import {InitialShadeState, ShadeService} from "./shade.service";
 
 const MockShadeFacade = mock<ShadeFacade>();
 
@@ -41,7 +41,7 @@ describe('ShadeService', () => {
       currentState++;
     });
 
-    await shadeService.loadList();
+    await shadeService.getAll();
     subscription.unsubscribe();
     verify(MockShadeFacade.getAllFiltered(anything())).called();
   });
