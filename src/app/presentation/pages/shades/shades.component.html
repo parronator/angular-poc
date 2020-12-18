@@ -1,18 +1,20 @@
 <ng-container *ngIf="{
+    state: shadeService.state$ | async,
     entities: shadeService.entities$ | async,
     loading: shadeService.loading$ | async,
-    error: shadeService.error$ | async
+    error: shadeService.error$ | async,
+    filters: shadeService.filters$ | async,
+    totalPages: shadeService.totalPages$ | async,
+    pageSize: shadeService.pageSize$ | async
 } as data">
-  <ui-sidebar-layout>
+  <ui-sidebar-layout *ngIf="data">
     <ui-search-header header></ui-search-header>
     <ui-sidebar sidebar></ui-sidebar>
-    <ng-container body>
+    <ng-container body *ngIf="data.state">
       <h1 class="hello-text">Shades</h1>
       <span *ngIf="showSpinner(data)">Loading...</span>
       <span *ngIf="data.error">Error found!</span>
-      <div *ngIf="showData(data)" style="display: flex; flex-direction: column">
-        <span *ngFor="let entity of data.entities">{{entity.name.value}} - {{entity.color.value}}</span>
-      </div>
+      <shade-table *ngIf="showData(data)" [data]="data.state"></shade-table>
     </ng-container>
   </ui-sidebar-layout>
 </ng-container>

@@ -1,0 +1,29 @@
+<div class="shade-table">
+  <nz-table #basicTable [nzData]="data.entities || []" [nzShowPagination]="false">
+    <thead>
+    <tr>
+      <th [nzSortOrder]="''"
+          (nzSortOrderChange)="changeOrder($event, 'id')"
+          [nzSortDirections]="['ascend', 'descend', null]">Id</th>
+      <th>Name</th>
+      <th>Color</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.id.value}}</td>
+      <td>{{data.name.value}}</td>
+      <td>{{data.color.value}}</td>
+      <td>
+        <a>Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+  <nz-pagination class="shade-table__pagination" [nzPageIndex]="data.filters['page']" [nzTotal]="
+        getNumberOfPages(data.totalPages || 0, data.entities || [])"
+                 [nzPageSize]="data.pageSize || 0" (nzPageIndexChange)="changePage($event)"></nz-pagination>
+</div>

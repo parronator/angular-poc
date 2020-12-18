@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadeJSONFixturePage2 = exports.shadeJSONFixturePage1 = exports.shadeListFixturePage2 = exports.shadeListFixturePage1 = exports.shadeJSONFixture = exports.shadeFixture = void 0;
+exports.shadeResponsePage2Fixture = exports.shadeResponsePage1Fixture = exports.shadeListFixturePage2 = exports.shadeListFixturePage1 = exports.shadeJSONFixture = exports.shadeFixture = void 0;
 var shade_1 = require("../app/core/shade/domain/shade");
 var shadeValueObject_1 = require("../app/core/shade/domain/shadeValueObject");
 var uniqueId_1 = require("../app/shared/domain/uniqueId");
@@ -46,37 +46,45 @@ exports.shadeListFixturePage2 = [
     new shade_1.Shade(uniqueId_1.UniqueId.create('5'), shadeValueObject_1.ShadeColor.create('pink'), shadeValueObject_1.ShadeName.create('pink shade')),
     new shade_1.Shade(uniqueId_1.UniqueId.create('6'), shadeValueObject_1.ShadeColor.create('crimson'), shadeValueObject_1.ShadeName.create('crimson shade'))
 ];
-exports.shadeJSONFixturePage1 = [
-    {
-        id: '1',
-        name: 'blue shade',
-        color: 'blue'
-    },
-    {
-        id: '2',
-        name: 'red shade',
-        color: 'red'
-    },
-    {
-        id: '3',
-        name: 'green shade',
-        color: 'green'
-    }
-];
-exports.shadeJSONFixturePage2 = [
-    {
-        id: '4',
-        name: 'yellow shade',
-        color: 'yellow'
-    },
-    {
-        id: '5',
-        name: 'pink shade',
-        color: 'pink'
-    },
-    {
-        id: '6',
-        name: 'crimson shade',
-        color: 'crimson'
-    }
-];
+exports.shadeResponsePage1Fixture = {
+    totalPages: 2,
+    pageSize: 3,
+    values: [
+        {
+            id: '1',
+            name: 'blue shade',
+            color: 'blue'
+        },
+        {
+            id: '2',
+            name: 'red shade',
+            color: 'red'
+        },
+        {
+            id: '3',
+            name: 'green shade',
+            color: 'green'
+        }
+    ]
+};
+exports.shadeResponsePage2Fixture = {
+    totalPages: 2,
+    pageSize: 3,
+    values: [
+        {
+            id: '4',
+            name: 'yellow shade',
+            color: 'yellow'
+        },
+        {
+            id: '5',
+            name: 'pink shade',
+            color: 'pink'
+        },
+        {
+            id: '6',
+            name: 'crimson shade',
+            color: 'crimson'
+        }
+    ]
+};

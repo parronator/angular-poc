@@ -8,6 +8,7 @@ import {WelcomeComponent} from './pages/welcome/welcome.component';
 import {BasicFormComponent} from './pages/basic-form/basic-form.component';
 import {CollectionExampleComponent} from './pages/entity/collection-example/collection-example.component';
 import {CollectionComponent} from './pages/entity/collection/collection.component';
+import { ShadeTableComponent } from './components/shade-table/shade-table.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {CollectionComponent} from './pages/entity/collection/collection.componen
     TranslationsComponent,
     ShadesComponent,
     CollectionExampleComponent,
-    CollectionComponent
+    CollectionComponent,
+    ShadeTableComponent,
   ],
   exports: [
     WelcomeComponent,

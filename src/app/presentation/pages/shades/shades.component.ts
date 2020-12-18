@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ShadeService} from '../../../application/shade/shadeService';
+import {Shade} from '../../../core/shade/domain/shade';
 
 @Component({
   selector: 'app-shades',
@@ -19,6 +20,8 @@ export class ShadesComponent implements OnInit {
   }
 
   showData(data: any): boolean {
-    return data.entities.length > 0;
+    return !data.error;
   }
+
+
 }

@@ -21,8 +21,8 @@ export class CollectionComponent implements OnInit {
   }
 
   loadInitialProducts(): void{
-    const promise = this.productService.getAllProducts();
-    promise.then((products) => { this.products = products; });
+    // const promise = this.productService.getAllProducts();
+    // promise.then((products: any) => { this.products = products; });
   }
 
   findRecipe(shadeId: string): Recipe{

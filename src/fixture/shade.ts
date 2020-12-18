@@ -43,37 +43,46 @@ export const shadeListFixturePage2 = [
   new Shade(UniqueId.create('5'), ShadeColor.create('pink'), ShadeName.create('pink shade')),
   new Shade(UniqueId.create('6'), ShadeColor.create('crimson'), ShadeName.create('crimson shade'))
 ];
-export const shadeJSONFixturePage1 = [
-  {
-    id: '1',
-    name: 'blue shade',
-    color: 'blue'
-  },
-  {
-    id: '2',
-    name: 'red shade',
-    color: 'red'
-  },
-  {
-    id: '3',
-    name: 'green shade',
-    color: 'green'
-  }
-];
-export const shadeJSONFixturePage2 = [
-  {
-    id: '4',
-    name: 'yellow shade',
-    color: 'yellow'
-  },
-  {
-    id: '5',
-    name: 'pink shade',
-    color: 'pink'
-  },
-  {
-    id: '6',
-    name: 'crimson shade',
-    color: 'crimson'
-  }
-];
+export const shadeResponsePage1Fixture = {
+  totalPages: 2,
+  pageSize: 3,
+  values: [
+    {
+      id: '1',
+      name: 'blue shade',
+      color: 'blue'
+    },
+    {
+      id: '2',
+      name: 'red shade',
+      color: 'red'
+    },
+    {
+      id: '3',
+      name: 'green shade',
+      color: 'green'
+    }
+  ]
+};
+
+export const shadeResponsePage2Fixture = {
+  totalPages: 2,
+  pageSize: 3,
+  values: [
+    {
+      id: '4',
+      name: 'yellow shade',
+      color: 'yellow'
+    },
+    {
+      id: '5',
+      name: 'pink shade',
+      color: 'pink'
+    },
+    {
+      id: '6',
+      name: 'crimson shade',
+      color: 'crimson'
+    }
+  ]
+};

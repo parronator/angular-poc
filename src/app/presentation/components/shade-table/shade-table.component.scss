@@ -1,0 +1,8 @@
+.shade-table {
+  display: flex;
+  flex-direction: column;
+  &__pagination {
+    margin: 2rem 0;
+    align-self: center;
+  }
+}

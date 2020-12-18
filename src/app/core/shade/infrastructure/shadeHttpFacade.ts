@@ -1,5 +1,5 @@
-import {ShadeFacade} from '../domain/shadeFacade';
-import {HttpClient} from '@angular/common/http';
+import {ShadeFacade, ShadeGetAllFilteredResponse} from '../domain/shadeFacade';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Shade} from '../domain/shade';
 import {map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
@@ -9,11 +9,13 @@ import {
   ShadeGetByCollectionIdHttpError,
   ShadeGetByIdHttpError
 } from '../domain/exceptions';
+import {ShadeFilters} from '../domain/filters';
 
 @Injectable()
 export class ShadeHttpFacade implements ShadeFacade {
   constructor(private httpClient: HttpClient) {
   }
+
 
   async create(): Promise<void> {
     return undefined;
@@ -28,6 +30,23 @@ export class ShadeHttpFacade implements ShadeFacade {
       throw new ShadeGetAllHttpError();
     }
   }
+
+  async getAllFiltered(filters: ShadeFilters): Promise<ShadeGetAllFilteredResponse> {
+    try {
+      return await this.httpClient.get('/api/shades?' + serialize(filters)).pipe(
+        map((data: any) => {
+          return {
+            pageSize: data.pageSize,
+            totalPages: data.totalPages,
+            shades: data.values.map((v: any) => Shade.create(v))
+          };
+        })
+      ).toPromise();
+    } catch (e) {
+      throw new ShadeGetAllHttpError();
+    }
+  }
+
 
   async getShadeById(id: string): Promise<Shade> {
     try {
@@ -55,3 +74,13 @@ export class ShadeHttpFacade implements ShadeFacade {
     }
   }
 }
+
+const serialize = (obj: any): string => {
+  let str: any = [];
+  for (const p in obj) {
+    if (obj.hasOwnProperty(p) && obj[p]) {
+      str = [...str, encodeURIComponent(p) + '=' + encodeURIComponent(obj[p])];
+    }
+  }
+  return str.join('&');
+};
