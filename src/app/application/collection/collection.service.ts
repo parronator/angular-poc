@@ -11,15 +11,27 @@ export class CollectionService extends BaseService<Collection> {
 
   async getAllCollections(): Promise<void> {
     this.setLoading(true);
-    const shades = await this.collectionFacade.getAllCollections();
-    this.setEntities(shades);
+    try{
+      const collections = await this.collectionFacade.getAllCollections();
+      this.setEntities(collections);
+    } catch (e) {
+      this.setError(e);
+    }
     this.setLoading(false);
   }
   async getCollectionById(id: string): Promise<void> {
     this.setLoading(true);
-    const shade = await this.collectionFacade.getCollectionByID(id);
-    this.setEntity(shade);
+    try {
+      const collection = await this.collectionFacade.getCollectionByID(id);
+      this.setEntity(collection);
+    }
+    catch (e){
+      this.setError(e);
+    }
     this.setLoading(false);
+  }
+  async createCollection(collection: Collection): Promise<void>{
+    throw new Error('Not yet implemented');
   }
 
 }

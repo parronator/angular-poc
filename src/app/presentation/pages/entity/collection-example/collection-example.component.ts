@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {collectionFixture} from '../../../../../fixture/collection';
+import {collectionSingleFixture} from '../../../../../fixture/collection';
 
 @Component({
   selector: 'app-collection-example',
@@ -8,7 +8,7 @@ import {collectionFixture} from '../../../../../fixture/collection';
 })
 export class CollectionExampleComponent implements OnInit {
 
-  exampleCollection = collectionFixture;
+  exampleCollection = collectionSingleFixture;
   constructor() { }
 
   ngOnInit(): void {

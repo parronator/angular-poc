@@ -1,5 +1,5 @@
 import { Collection } from './collection';
-import {collectionFixture} from '../../../../fixture/collection';
+import {collectionSingleFixture} from '../../../../fixture/collection';
 
 import {UniqueId} from '../../../shared/domain/uniqueId';
 import {CollectionName} from './collectionValueObject';
@@ -7,7 +7,7 @@ import {CollectionName} from './collectionValueObject';
 
 describe('Collection', () => {
   it('should create an instance', () => {
-    expect(collectionFixture).toBeTruthy();
+    expect(collectionSingleFixture).toBeTruthy();
   });
   it('should throw an error when creating bad collection', () => {
     expect(() => new Collection(UniqueId.create(''), CollectionName.create('asda'), [])).toThrow();

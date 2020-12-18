@@ -1,5 +1,5 @@
 import {singleProductFixture} from '../../../fixture/product';
-import {ProductService} from './productService';
+import {ProductService} from './product.service';
 import {instance, mock, verify, when} from 'ts-mockito';
 import {ProductFacade} from '../../core/product/domain/productFacade';
 

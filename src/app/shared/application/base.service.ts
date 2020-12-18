@@ -4,7 +4,7 @@ import {BehaviorSubject} from "rxjs";
 import {map} from 'rxjs/operators';
 
 export abstract class BaseService<T> {
-  InitialEntityState: EntityState<T> = {loading: false, entities: []};
+  InitialEntityState: EntityState<T> = {loading: false, entities: [], error: false};
 
   protected constructor() { }
 
@@ -31,6 +31,17 @@ export abstract class BaseService<T> {
 
   protected setLoading(loading: boolean): void {
     const currentState = this.st.getValue();
-    this.st.next({...currentState, loading});
+    if (loading) {
+      this.st.next({...currentState, loading, error: false});
+    } else {
+      this.st.next({...currentState, loading});
+    }
+  }
+
+  protected setError(exception: any): void {
+    // Currently doesn't do anything with error, but it could be
+    // useful to perhaps do something with the error message?
+    const currentState = this.st.getValue();
+    this.st.next({...currentState, error: true});
   }
 }

@@ -1,12 +1,12 @@
 import express = require('express');
 import bodyParser from 'body-parser';
-import {findAll, findOne} from './controllers/shadeController';
+import {getAllShades, getShadeById} from './controllers/shadeController';
 
 const app: express.Application = express();
 const router = express.Router();
 
-router.get('/shades', findAll);
-router.get('/shades/:id', findOne);
+router.get('/shades', getAllShades);
+router.get('/shades/:id', getShadeById);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -1,5 +1,5 @@
 import { TestCollectionFacade } from './test-collection-facade';
-import {collectionFixture} from '../../../../fixture/collection';
+import {collectionSingleFixture} from '../../../../fixture/collection';
 
 describe('TestCollectionFacade', () => {
   let facade: TestCollectionFacade;
@@ -14,12 +14,12 @@ describe('TestCollectionFacade', () => {
 
   it('should return a list of collection when calling "getAllCollections', async () => {
     const result = await facade.getAllCollections();
-    expect(result).toEqual([collectionFixture]);
+    expect(result).toEqual([collectionSingleFixture]);
   });
 
   it('should return single collection when calling "getAllCollections', async () => {
     const result = await facade.getCollectionByID('any');
-    expect(result).toBe(collectionFixture);
+    expect(result).toBe(collectionSingleFixture);
   });
 
 });
