@@ -2,16 +2,23 @@
   <nz-table #basicTable [nzData]="data.entities || []" [nzShowPagination]="false">
     <thead>
     <tr>
-      <th [nzSortOrder]="''"
+      <th [nzSortOrder]="data.filters.orderBy === 'id' ? data.filters.orderDirection : ''"
           (nzSortOrderChange)="changeOrder($event, 'id')"
-          [nzSortDirections]="['ascend', 'descend', null]">Id</th>
-      <th>Name</th>
-      <th>Color</th>
+          [nzSortDirections]="['descend', 'ascend']">Id
+      </th>
+      <th [nzSortOrder]="data.filters.orderBy === 'name' ? data.filters.orderDirection : ''"
+          (nzSortOrderChange)="changeOrder($event, 'name')"
+          [nzSortDirections]="['descend', 'ascend']">Name
+      </th>
+      <th [nzSortOrder]="data.filters.orderBy === 'color' ? data.filters.orderDirection : ''"
+          (nzSortOrderChange)="changeOrder($event, 'color')"
+          [nzSortDirections]="['descend', 'ascend']">Color</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let data of basicTable.data">
+    <tr *ngFor=" let data of basicTable.data
+      ">
       <td>{{data.id.value}}</td>
       <td>{{data.name.value}}</td>
       <td>{{data.color.value}}</td>
