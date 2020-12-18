@@ -39,9 +39,11 @@ export class ShadeService {
   readonly error$: Observable<boolean> = this.st.pipe(pluck('error'));
 
   async loadList(): Promise<void> {
-    this.setLoading(true);
+    const currentState = this.st.getValue();
+    if (!currentState.entities.length) {
+      this.setLoading(true);
+    }
     try {
-      const currentState = this.st.getValue();
       const response: ShadeGetAllFilteredResponse = await this.shadeFacade.getAllFiltered(currentState.filters);
       this.setEntities(response.shades, response.totalPages, response.pageSize);
     } catch (e) {
