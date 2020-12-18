@@ -35,12 +35,8 @@ export class ShadeService {
   private st = new BehaviorSubject(InitialShadeState);
 
   readonly state$: Observable<ShadeState> = this.st;
-  readonly entities$: Observable<Shade[]> = this.st.pipe(pluck('entities'));
   readonly loading$: Observable<boolean> = this.st.pipe(pluck('loading'));
   readonly error$: Observable<boolean> = this.st.pipe(pluck('error'));
-  readonly filters$: Observable<any> = this.st.pipe(pluck('filters'));
-  readonly totalPages$: Observable<number> = this.st.pipe(pluck('totalPages'));
-  readonly pageSize$: Observable<number> = this.st.pipe(pluck('pageSize'));
 
   async loadList(): Promise<void> {
     this.setLoading(true);
