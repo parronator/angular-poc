@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {InitialShadeState, ShadeService, ShadeState} from '../../../application/shade/shadeService';
 import {Shade} from '../../../core/shade/domain/shade';
+import {InitialShadeState, ShadeService, ShadeState} from '../../../application/shade/shade.service';
 
 @Component({
   selector: 'shade-table',

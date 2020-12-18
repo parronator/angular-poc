@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductService} from "../../../../application/product/productService";
+import {ProductService} from "../../../../application/product/product.service";
 import {Product} from "../../../../core/product/domain/product";
 import {Recipe} from "../../../../core/recipe/domain/recipe";
 
@@ -21,8 +21,8 @@ export class CollectionComponent implements OnInit {
   }
 
   loadInitialProducts(): void{
-    // const promise = this.productService.getAllProducts();
-    // promise.then((products: any) => { this.products = products; });
+    const promise = this.productService.getAllProducts();
+    //promise.then((products) => { this.products = products; });
   }
 
   findRecipe(shadeId: string): Recipe{

@@ -2,7 +2,7 @@ import { CollectionHttpFacade } from './collection-http-facade';
 import {CollectionFacade} from '../domain/collectionFacade';
 import {HttpClient} from '@angular/common/http';
 import {anyString, instance, mock, verify, when} from 'ts-mockito';
-import {collectionFixture, collectionJsonFixture} from '../../../../fixture/collection';
+import {collectionSingleFixture, collectionSingleJsonFixture} from '../../../../fixture/collection';
 import {of} from 'rxjs';
 
 const MockHttpClient = mock<HttpClient>();
@@ -21,9 +21,9 @@ xdescribe('CollectionHttpFacade', () => {
   });
 
   it('should return a list of collections when calling getAllCollections.', async () => {
-    when(MockHttpClient.get(anyString())).thenReturn(of([collectionJsonFixture]));
+    when(MockHttpClient.get(anyString())).thenReturn(of([collectionSingleJsonFixture]));
     const result = await facade.getAllCollections();
     verify(MockHttpClient.get('/allCollections')).called();
-    expect(result).toEqual([collectionFixture]);
+    expect(result).toEqual([collectionSingleFixture]);
   });
 });

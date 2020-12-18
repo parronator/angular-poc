@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ShadeService} from '../../../application/shade/shadeService';
+import {ShadeService} from '../../../application/shade/shade.service';
 
 @Component({
   selector: 'app-shades',
@@ -11,6 +11,6 @@ export class ShadesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shadeService.loadList();
+    this.shadeService.getAll();
   }
 }

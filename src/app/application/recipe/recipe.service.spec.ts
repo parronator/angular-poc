@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { RecipeService } from './recipe.service';
 import {RecipeFacade} from '../../core/recipe/domain/recipe-facade';
-import {instance, mock, reset, verify, when} from 'ts-mockito';
-import {recipeFixtureList} from '../../../fixture/recipe';
+import {anyString, instance, mock, reset, verify, when} from 'ts-mockito';
+import {recipeFixtureList, singleJsonRecipeFixture, singleRecipeFixture} from '../../../fixture/recipe';
 import {TestScheduler} from 'rxjs/testing';
 
 const MockRecipeFacade = mock<RecipeFacade>();
@@ -42,6 +42,29 @@ describe('RecipeService', () => {
     });
 
     await service.getAllRecipes();
+    subscription.unsubscribe();
+    verify(MockRecipeFacade.getAllRecipes()).called();
+  });
+
+  xit('should retrieve a single recipe when searching by id.', async () => {
+    const data = singleRecipeFixture;
+    when(MockRecipeFacade.getRecipeById(anyString())).thenResolve(data);
+
+    let currentState = 0;
+    const expectedState: any = {
+      0: {...service.InitialEntityState},
+      1: {...service.InitialEntityState, loading: true},
+      2: {...service.InitialEntityState, loading: true, entities: [data]},
+      3: {...service.InitialEntityState, loading: false, entities: [data]}
+    };
+
+    const subscription = service.state$.subscribe((e) => {
+      expect(e).toEqual(expectedState[currentState]);
+      currentState++;
+    });
+
+    await service.getRecipeById('any');
+    subscription.unsubscribe();
     verify(MockRecipeFacade.getAllRecipes()).called();
   });
 });

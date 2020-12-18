@@ -1,5 +1,5 @@
 import {singleProductFixture} from '../../../fixture/product';
-import {ProductService} from './productService';
+import {ProductService} from './product.service';
 import {instance, mock, verify, when} from 'ts-mockito';
 import {ProductFacade} from '../../core/product/domain/productFacade';
 
@@ -53,6 +53,7 @@ describe('ProductService', () => {
     });
 
     await service.createProduct(singleProduct);
+    subscription.unsubscribe();
     verify(MockProductFacade.create(singleProduct)).called();
   });
 
@@ -74,6 +75,7 @@ describe('ProductService', () => {
     });
 
     await service.getProductById(singleProductFixture.id);
+    subscription.unsubscribe();
     verify(MockProductFacade.getById(singleProduct.id.value)).called();
   });
 });

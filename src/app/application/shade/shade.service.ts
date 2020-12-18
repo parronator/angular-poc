@@ -38,7 +38,7 @@ export class ShadeService {
   readonly loading$: Observable<boolean> = this.st.pipe(pluck('loading'));
   readonly error$: Observable<boolean> = this.st.pipe(pluck('error'));
 
-  async loadList(): Promise<void> {
+  async getAll(): Promise<void> {
     const currentState = this.st.getValue();
     if (!currentState.entities.length) {
       this.setLoading(true);
@@ -55,13 +55,13 @@ export class ShadeService {
   changePage(page: number): void {
     const currentState = this.st.getValue();
     this.st.next({...currentState, filters: {...currentState.filters, page}});
-    this.loadList();
+    this.getAll();
   }
 
   changeOrder(field: string, direction: string): void {
     const currentState = this.st.getValue();
     this.st.next({...currentState, filters: {...currentState.filters, orderBy: field, orderDirection: direction}});
-    this.loadList();
+    this.getAll();
   }
 
   async create(shade: Shade): Promise<void> {

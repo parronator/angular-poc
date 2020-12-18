@@ -1,17 +1,37 @@
 import {CollectionFacade} from '../../core/collection/domain/collectionFacade';
 import {Collection} from '../../core/collection/domain/collection';
+import {BaseService} from '../../shared/application/base.service';
 
 
-export class CollectionService {
+export class CollectionService extends BaseService<Collection> {
 
-  constructor(private collectionFacade: CollectionFacade) { }
-
-  async getAllCollections(): Promise<Collection[]> {
-    return await this.collectionFacade.getAllCollections();
+  constructor(private collectionFacade: CollectionFacade) {
+    super();
   }
-  async getCollectionById(id: string): Promise<Collection> {
-    throw new Error();
-    // return await this.collectionFacade.getCollectionByID(id);
+
+  async getAllCollections(): Promise<void> {
+    this.setLoading(true);
+    try{
+      const collections = await this.collectionFacade.getAllCollections();
+      this.setEntities(collections);
+    } catch (e) {
+      this.setError(e);
+    }
+    this.setLoading(false);
+  }
+  async getCollectionById(id: string): Promise<void> {
+    this.setLoading(true);
+    try {
+      const collection = await this.collectionFacade.getCollectionByID(id);
+      this.setEntity(collection);
+    }
+    catch (e){
+      this.setError(e);
+    }
+    this.setLoading(false);
+  }
+  async createCollection(collection: Collection): Promise<void>{
+    throw new Error('Not yet implemented');
   }
 
 }
