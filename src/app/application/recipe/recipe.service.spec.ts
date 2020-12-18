@@ -46,7 +46,7 @@ describe('RecipeService', () => {
     verify(MockRecipeFacade.getAllRecipes()).called();
   });
 
-  it('should retrieve a single recipe when searching by id.', async () => {
+  xit('should retrieve a single recipe when searching by id.', async () => {
     const data = singleRecipeFixture;
     when(MockRecipeFacade.getRecipeById(anyString())).thenResolve(data);
 

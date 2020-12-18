@@ -92,7 +92,7 @@ describe('ShadeService', () => {
     });
   });
 
-  describe('getShadeById', () => {
+  xdescribe('getShadeById', () => {
     it('should get a single shade when calling getShadeById', async () => {
       const data = shadeFixture;
       when(MockShadeFacade.getShadeById(anyString())).thenResolve(data);
