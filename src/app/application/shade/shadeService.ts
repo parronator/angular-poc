@@ -22,7 +22,7 @@ export const InitialShadeState: ShadeState = {
   error: false,
   filters: {
     page: 1,
-    orderBy: 'id',
+    orderBy: '',
     orderDirection: ''
   }
 };
