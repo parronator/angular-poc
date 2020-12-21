@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-basic-form',
@@ -9,19 +9,19 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class BasicFormComponent implements OnInit {
 
   form: FormGroup;
-  result: string = "";
+  result = '';
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       name: '',
       message: ''
-    })
+    });
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(value: any){
+  onSubmit(value: any): void{
     console.log(value);
     this.result = `${value.name} says: ${value.message}`;
   }

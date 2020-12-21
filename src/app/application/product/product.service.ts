@@ -25,7 +25,7 @@ export class ProductService extends BaseService<Product>{
   async getProductById(id: UniqueId): Promise<void> {
     this.setLoading(true);
     const products = await this.productFacade.getById(id.value);
-    //TODO: Discuss what the state should look like when loading by Id.
+    // TODO: Discuss what the state should look like when loading by Id.
     this.setEntities([products]);
     this.setLoading(false);
   }

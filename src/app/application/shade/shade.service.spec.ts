@@ -3,7 +3,7 @@ import {anything, instance, mock, reset, verify, when} from 'ts-mockito';
 import {shadeFixture} from '../../../fixture/shade';
 import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
 import {TestScheduler} from 'rxjs/testing';
-import {InitialShadeState, ShadeService} from "./shade.service";
+import {InitialShadeState, ShadeService} from './shade.service';
 
 const MockShadeFacade = mock<ShadeFacade>();
 

@@ -1,6 +1,5 @@
-
-import {EntityState} from "./entity-state";
-import {BehaviorSubject} from "rxjs";
+import {EntityState} from './entity-state';
+import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 export abstract class BaseService<T> {

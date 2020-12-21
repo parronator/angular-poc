@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductService} from "../../../../application/product/product.service";
-import {Product} from "../../../../core/product/domain/product";
-import {Recipe} from "../../../../core/recipe/domain/recipe";
+import {ProductService} from '../../../../application/product/product.service';
+import {Product} from '../../../../core/product/domain/product';
+import {Recipe} from '../../../../core/recipe/domain/recipe';
 
 @Component({
   selector: 'app-collection',
@@ -22,11 +22,11 @@ export class CollectionComponent implements OnInit {
 
   loadInitialProducts(): void{
     const promise = this.productService.getAllProducts();
-    //promise.then((products) => { this.products = products; });
+    // promise.then((products) => { this.products = products; });
   }
 
   findRecipe(shadeId: string): Recipe{
-    throw new Error("Not yet implemented")
+    throw new Error('Not yet implemented');
   }
 
 }

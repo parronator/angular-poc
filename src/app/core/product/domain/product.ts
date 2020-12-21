@@ -1,6 +1,6 @@
-﻿import {UniqueId} from "../../../shared/domain/uniqueId";
-import {ProductName} from "./productValueObject";
-import {Recipe} from "../../recipe/domain/recipe";
+﻿import {UniqueId} from '../../../shared/domain/uniqueId';
+import {ProductName} from './productValueObject';
+import {Recipe} from '../../recipe/domain/recipe';
 
 export class Product{
   constructor(public id: UniqueId, public name: ProductName, recipes: Recipe[]){

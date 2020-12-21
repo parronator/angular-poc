@@ -1,7 +1,7 @@
-﻿import {Product} from "../app/core/product/domain/product";
-import {UniqueId} from "../app/shared/domain/uniqueId";
-import {ProductName} from "../app/core/product/domain/productValueObject";
-import {recipeFixtureList, recipeJsonFixtureList} from "./recipe";
+﻿import {Product} from '../app/core/product/domain/product';
+import {UniqueId} from '../app/shared/domain/uniqueId';
+import {ProductName} from '../app/core/product/domain/productValueObject';
+import {recipeFixtureList, recipeJsonFixtureList} from './recipe';
 
 export const singleProductFixture = new Product(UniqueId.create('1'), ProductName.create('product 1'), recipeFixtureList);
 

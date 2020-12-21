@@ -1,4 +1,4 @@
-import {ValueObject} from "../../../shared/domain/valueObject";
+import {ValueObject} from '../../../shared/domain/valueObject';
 
 export class CollectionName implements ValueObject{
   static minLength = 1;

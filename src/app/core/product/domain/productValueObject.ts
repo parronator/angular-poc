@@ -1,4 +1,4 @@
-﻿import {ValueObject} from "../../../shared/domain/valueObject";
+﻿import {ValueObject} from '../../../shared/domain/valueObject';
 
 export class ProductName implements ValueObject{
   static minLength = 1;
@@ -11,8 +11,8 @@ export class ProductName implements ValueObject{
     return !(value.length < ProductName.minLength || value.length > ProductName.maxLength);
   }
 
-  static create(value: string){
-    if(!ProductName.validate(value)){
+  static create(value: string): ProductName{
+    if (!ProductName.validate(value)){
       throw new Error();
     }
     return new ProductName(value);

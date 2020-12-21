@@ -1,4 +1,4 @@
-import {Recipe} from "./recipe";
+import {Recipe} from './recipe';
 
 export abstract class RecipeFacade {
   abstract async getAllRecipes(): Promise<Recipe[]>;

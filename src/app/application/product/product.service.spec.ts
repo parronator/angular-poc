@@ -17,7 +17,7 @@ describe('ProductService', () => {
   it('should get list of products', async () => {
     const data = [singleProductFixture, singleProductFixture];
     when(MockProductFacade.getAll()).thenResolve(data);
-    //TODO: Discuss how to extract this test so that it can be reused.
+    // TODO: Discuss how to extract this test so that it can be reused.
     let currentState = 0;
     const expectedState: any = {
       0: {...service.InitialEntityState},
