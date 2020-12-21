@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Collection = void 0;
 var uniqueId_1 = require("../../../shared/domain/uniqueId");
 var collectionValueObject_1 = require("./collectionValueObject");
+var shade_1 = require("../../shade/domain/shade");
 var Collection = /** @class */ (function () {
     function Collection(id, name, shades) {
         this.id = id;
@@ -18,7 +19,7 @@ var Collection = /** @class */ (function () {
     });
     Object.defineProperty(Collection.prototype, "Name", {
         get: function () {
-            return collectionValueObject_1.CollectionName.create(this.name.value);
+            return this.Name;
         },
         enumerable: false,
         configurable: true
@@ -32,7 +33,7 @@ var Collection = /** @class */ (function () {
     });
     Collection.create = function (_a) {
         var id = _a.id, name = _a.name, shades = _a.shades;
-        return new Collection(uniqueId_1.UniqueId.create(id), collectionValueObject_1.CollectionName.create(name), shades);
+        return new Collection(uniqueId_1.UniqueId.create(id), collectionValueObject_1.CollectionName.create(name), shades.map(function (shade) { return shade_1.Shade.create(shade); }));
     };
     return Collection;
 }());

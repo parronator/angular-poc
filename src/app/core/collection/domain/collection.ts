@@ -12,7 +12,7 @@ export class Collection {
   }
 
   get Name(): CollectionName{
-  return CollectionName.create(this.name.value);
+  return this.Name;
   }
 
   get Shades(): Shade[]{
@@ -20,6 +20,6 @@ export class Collection {
   }
 
   static create({id, name, shades}: any): Collection {
-    return new Collection(UniqueId.create(id), CollectionName.create(name), shades);
+    return new Collection(UniqueId.create(id), CollectionName.create(name), shades.map((shade: any) => Shade.create(shade)));
   }
 }

@@ -9,8 +9,8 @@ export class Recipe {
     private colorId: UniqueId,
     private opacity: number,
     private thickness: number,
-    private engineered: boolean = false,
-    private released: boolean = false,
+    private engineered: boolean,
+    private released: boolean,
     // private quality: number,
     // spectralData: yyy
     // measurementCondition: yyy
@@ -44,8 +44,10 @@ export class Recipe {
     return this.released;
   }
 
-  static create({id, sourceId, sourceName, colorId, opacity, thickness }: any): Recipe{
-    return new Recipe(UniqueId.create(id), UniqueId.create(sourceId), sourceName,  UniqueId.create(colorId), opacity, thickness);
+  static create({id, sourceId, sourceName, colorId, opacity, thickness, engineered, released }: any): Recipe{
+    console.log({id, sourceId, sourceName, colorId, opacity, thickness, engineered, released });
+    // tslint:disable-next-line:max-line-length
+    return new Recipe(UniqueId.create(id), UniqueId.create(sourceId), sourceName,  UniqueId.create(colorId), opacity, thickness, engineered, released);
   }
 
 }

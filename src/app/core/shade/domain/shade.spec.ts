@@ -1,17 +1,17 @@
 import {Shade} from './shade';
 import {ShadeColor, ShadeName} from './shadeValueObject';
-import {shadeFixture} from '../../../../fixture/shade';
+import {singleShadeFixture} from '../../../../fixture/shade';
 import {UniqueId} from '../../../shared/domain/uniqueId';
 
 describe('Shade', () => {
   it('should be a valid entity', () => {
 
-    expect(shadeFixture).toBeTruthy();
+    expect(singleShadeFixture).toBeTruthy();
   });
 
   it('should throw an error when creating bad shade', () => {
-    expect(() => new Shade(UniqueId.create(''), ShadeColor.create('asda'), ShadeName.create('asdaw'))).toThrow();
-    expect(() => new Shade(UniqueId.create('1231'), ShadeColor.create('asdaw'), ShadeName.create(''))).toThrow();
-    expect(() => new Shade(UniqueId.create('1231'), ShadeColor.create(''), ShadeName.create('asdaw'))).toThrow();
+    expect(() => Shade.create({id: '', name: 'asda', colorId: 'asdaw', color: 'color'})).toThrow();
+    expect(() => Shade.create({id: 'abc', name: '', colorId: 'asdaw', color: 'color'})).toThrow();
+    expect(() => Shade.create({id: 'abc', name: 'asda', colorId: 'asdaw', color: ''})).toThrow();
   });
 });

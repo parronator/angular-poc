@@ -14,7 +14,7 @@ export class ProductHttpFacade implements ProductFacade {
 
   async getAll(): Promise<Product[]> {
     try {
-      return await this.httpClient.get('/getListOfProducts')
+      return await this.httpClient.get('/api/products')
         .pipe(
           map((values: any) => values.map((v: any) => Product.create(v)))
         ).toPromise();

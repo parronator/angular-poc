@@ -14,19 +14,40 @@ export class CollectionComponent implements OnInit {
 
   products: Product[];
 
-  constructor(private productService: ProductService) { this.products = []; }
+  constructor(public productService: ProductService) { this.products = []; }
 
   ngOnInit(): void {
     this.loadInitialProducts();
   }
 
   loadInitialProducts(): void{
-    const promise = this.productService.getAllProducts();
-    // promise.then((products) => { this.products = products; });
+    this.productService.getAllProducts();
+    console.log('products');
+    console.log(this.productService.state$.value.entities);
   }
 
-  findRecipe(shadeId: string): Recipe{
-    throw new Error('Not yet implemented');
+  findRecipe(colorId: string, prodId: number): Recipe | undefined{
+    console.log("product at index " + prodId + " is: ");
+    console.log(this.productService.state$.value.entities[prodId])
+    const bla = this.productService.state$.value.entities[prodId]?.recipes.find(recipe => recipe.ColorId.value === colorId) ?? undefined;
+    console.log(`colorid: ${colorId}, prodid: ${prodId}`);
+    console.log(bla);
+    return this.productService.state$.value.entities[prodId]?.recipes.find(recipe => recipe.ColorId.value === colorId) ?? undefined;
   }
+
+
+  style(recipe: Recipe | undefined): string{
+    if (!recipe){
+      console.log(`Recipe is: ${recipe}`);
+      return 'collection-table__recipe-unavailable';
+    }
+    else{
+      if (recipe.Released.valueOf()){
+        return recipe.Engineered ? 'collection-table__recipe-released__engineered' : 'collection-table__recipe-released';
+      }
+      return recipe.Engineered ? 'collection-table__recipe-not-released__engineered' : 'collection-table__recipe-not-released';
+    }
+  }
+
 
 }

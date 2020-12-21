@@ -1,6 +1,6 @@
 // @ts-ignore
 import {anything, instance, mock, reset, verify, when} from 'ts-mockito';
-import {shadeFixture} from '../../../fixture/shade';
+import {singleShadeFixture} from '../../../fixture/shade';
 import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
 import {TestScheduler} from 'rxjs/testing';
 import {InitialShadeState, ShadeService} from './shade.service';
@@ -25,7 +25,7 @@ describe('ShadeService', () => {
   });
 
   it('should stream the correct state when loading', async () => {
-    const data = {pageSize: 3, totalPages: 2, shades: [shadeFixture, shadeFixture]};
+    const data = {pageSize: 3, totalPages: 2, shades: [singleShadeFixture, singleShadeFixture]};
     when(MockShadeFacade.getAllFiltered(anything())).thenResolve(data);
 
     let currentState = 0;
@@ -47,7 +47,7 @@ describe('ShadeService', () => {
   });
 
   it('should stream the correct state when changing page', async () => {
-    const data = {pageSize: 3, totalPages: 2, shades: [shadeFixture, shadeFixture]};
+    const data = {pageSize: 3, totalPages: 2, shades: [singleShadeFixture, singleShadeFixture]};
     when(MockShadeFacade.getAllFiltered(anything())).thenResolve(data);
 
     let currentState = 0;
@@ -71,7 +71,7 @@ describe('ShadeService', () => {
   });
 
   it('should stream the correct state when changing order', async () => {
-    const data = {pageSize: 3, totalPages: 2, shades: [shadeFixture, shadeFixture]};
+    const data = {pageSize: 3, totalPages: 2, shades: [singleShadeFixture, singleShadeFixture]};
     when(MockShadeFacade.getAllFiltered(anything())).thenResolve(data);
 
     let currentState = 0;

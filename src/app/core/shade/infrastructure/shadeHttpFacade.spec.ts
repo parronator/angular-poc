@@ -2,8 +2,8 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {anyString, instance, mock, reset, verify, when} from 'ts-mockito';
 import {ShadeFacade} from '../domain/shadeFacade';
 import {
-  shadeFixture,
-  shadeJSONFixture,
+  singleShadeFixture,
+  shadeJsonFixtureList,
   shadeListFixturePage1,
   shadeListFixturePage2,
   shadeResponsePage1Fixture,
@@ -30,10 +30,10 @@ describe('ShadeHttpFacade', () => {
 
   describe('getList', () => {
     it('should return Shade list when http call success on proper url', async () => {
-      when(MockHttpClient.get(anyString())).thenReturn(of([shadeJSONFixture[0]]));
+      when(MockHttpClient.get(anyString())).thenReturn(of([shadeJsonFixtureList[0]]));
       const result = await facade.getAll();
       verify(MockHttpClient.get('/api/shades')).called();
-      expect(result).toEqual([shadeFixture]);
+      expect(result).toEqual([singleShadeFixture]);
     });
 
     it('should throw an error when http call is failing', async () => {
@@ -79,10 +79,10 @@ describe('ShadeHttpFacade', () => {
 
   describe('get single shades', () => {
     it('should return a single shade when retriving a single shade', async () => {
-      when(MockHttpClient.get(anyString())).thenReturn(of(shadeJSONFixture[0]));
+      when(MockHttpClient.get(anyString())).thenReturn(of(shadeJsonFixtureList[0]));
       const result = await facade.getShadeById('1');
       verify(MockHttpClient.get('/api/shades/1')).called();
-      expect(result).toEqual(shadeFixture);
+      expect(result).toEqual(singleShadeFixture);
     });
   });
 });

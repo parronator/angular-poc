@@ -1,90 +1,77 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadeResponsePage2Fixture = exports.shadeResponsePage1Fixture = exports.shadeListFixturePage2 = exports.shadeListFixturePage1 = exports.shadeJSONFixture = exports.shadeFixture = void 0;
+exports.shadeResponsePage2Fixture = exports.shadeResponsePage1Fixture = exports.shadeListFixturePage2 = exports.shadeListFixturePage1 = exports.singleShadeFixture = exports.shadeJsonFixtureList = void 0;
 var shade_1 = require("../app/core/shade/domain/shade");
-var shadeValueObject_1 = require("../app/core/shade/domain/shadeValueObject");
-var uniqueId_1 = require("../app/shared/domain/uniqueId");
-exports.shadeFixture = new shade_1.Shade(uniqueId_1.UniqueId.create('1'), shadeValueObject_1.ShadeColor.create('blue'), shadeValueObject_1.ShadeName.create('blue shade'));
-exports.shadeJSONFixture = [
+exports.shadeJsonFixtureList = [
     {
         id: '1',
         name: 'blue shade',
+        colorId: 'colorId1',
         color: 'blue'
-    }, {
-        id: '4',
-        name: 'yellow shade',
-        color: 'yellow'
     },
     {
         id: '2',
         name: 'red shade',
+        colorId: 'colorId2',
         color: 'red'
     },
     {
         id: '3',
         name: 'green shade',
+        colorId: 'colorId3',
         color: 'green'
+    },
+    {
+        id: '4',
+        name: 'yellow shade',
+        colorId: 'colorId4',
+        color: 'yellow'
     },
     {
         id: '5',
         name: 'pink shade',
+        colorId: 'colorId5',
         color: 'pink'
     },
     {
         id: '6',
         name: 'crimson shade',
+        colorId: 'colorId6',
         color: 'crimson'
+    },
+    {
+        id: '7',
+        name: 'azure shade',
+        colorId: 'colorId7',
+        color: 'azure'
     }
 ];
+exports.singleShadeFixture = shade_1.Shade.create(exports.shadeJsonFixtureList[0]);
 exports.shadeListFixturePage1 = [
-    new shade_1.Shade(uniqueId_1.UniqueId.create('1'), shadeValueObject_1.ShadeColor.create('blue'), shadeValueObject_1.ShadeName.create('blue shade')),
-    new shade_1.Shade(uniqueId_1.UniqueId.create('2'), shadeValueObject_1.ShadeColor.create('red'), shadeValueObject_1.ShadeName.create('red shade')),
-    new shade_1.Shade(uniqueId_1.UniqueId.create('3'), shadeValueObject_1.ShadeColor.create('green'), shadeValueObject_1.ShadeName.create('green shade'))
+    shade_1.Shade.create(exports.shadeJsonFixtureList[0]),
+    shade_1.Shade.create(exports.shadeJsonFixtureList[1]),
+    shade_1.Shade.create(exports.shadeJsonFixtureList[2]),
 ];
 exports.shadeListFixturePage2 = [
-    new shade_1.Shade(uniqueId_1.UniqueId.create('4'), shadeValueObject_1.ShadeColor.create('yellow'), shadeValueObject_1.ShadeName.create('yellow shade')),
-    new shade_1.Shade(uniqueId_1.UniqueId.create('5'), shadeValueObject_1.ShadeColor.create('pink'), shadeValueObject_1.ShadeName.create('pink shade')),
-    new shade_1.Shade(uniqueId_1.UniqueId.create('6'), shadeValueObject_1.ShadeColor.create('crimson'), shadeValueObject_1.ShadeName.create('crimson shade'))
+    shade_1.Shade.create(exports.shadeJsonFixtureList[3]),
+    shade_1.Shade.create(exports.shadeJsonFixtureList[4]),
+    shade_1.Shade.create(exports.shadeJsonFixtureList[5]),
 ];
 exports.shadeResponsePage1Fixture = {
     totalPages: 2,
     pageSize: 3,
     values: [
-        {
-            id: '1',
-            name: 'blue shade',
-            color: 'blue'
-        },
-        {
-            id: '2',
-            name: 'red shade',
-            color: 'red'
-        },
-        {
-            id: '3',
-            name: 'green shade',
-            color: 'green'
-        }
+        exports.shadeJsonFixtureList[0],
+        exports.shadeJsonFixtureList[1],
+        exports.shadeJsonFixtureList[2]
     ]
 };
 exports.shadeResponsePage2Fixture = {
     totalPages: 2,
     pageSize: 3,
     values: [
-        {
-            id: '4',
-            name: 'yellow shade',
-            color: 'yellow'
-        },
-        {
-            id: '5',
-            name: 'pink shade',
-            color: 'pink'
-        },
-        {
-            id: '6',
-            name: 'crimson shade',
-            color: 'crimson'
-        }
+        exports.shadeJsonFixtureList[3],
+        exports.shadeJsonFixtureList[4],
+        exports.shadeJsonFixtureList[5]
     ]
 };
