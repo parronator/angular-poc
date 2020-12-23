@@ -1,4 +1,4 @@
-import {ShadeFacade, ShadeGetAllFilteredResponse} from '../domain/shadeFacade';
+import {ShadeFacade} from '../domain/shadeFacade';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Shade} from '../domain/shade';
 import {map} from 'rxjs/operators';
@@ -9,7 +9,9 @@ import {
   ShadeGetByCollectionIdHttpError,
   ShadeGetByIdHttpError
 } from '../domain/exceptions';
-import {ShadeFilters} from '../domain/filters';
+import {GetAllFilteredResponse} from '../../../shared/domain/GetAllFilteredResponse';
+import {EntityFilter} from '../../../shared/application/entity-state';
+import {serialize} from '../../../shared/domain/FacadeUtils';
 
 @Injectable()
 export class ShadeHttpFacade implements ShadeFacade {
@@ -31,14 +33,14 @@ export class ShadeHttpFacade implements ShadeFacade {
     }
   }
 
-  async getAllFiltered(filters: ShadeFilters): Promise<ShadeGetAllFilteredResponse> {
+  async getAllFiltered(filters: EntityFilter): Promise<GetAllFilteredResponse<Shade>> {
     try {
       return await this.httpClient.get('/api/shades?' + serialize(filters)).pipe(
         map((data: any) => {
           return {
             pageSize: data.pageSize,
             totalPages: data.totalPages,
-            shades: data.values.map((v: any) => Shade.create(v))
+            entities: data.values.map((v: any) => Shade.create(v))
           };
         })
       ).toPromise();
@@ -48,7 +50,7 @@ export class ShadeHttpFacade implements ShadeFacade {
   }
 
 
-  async getShadeById(id: string): Promise<Shade> {
+  async getById(id: string): Promise<Shade> {
     try {
       return await this.httpClient.get(`/api/shades/${id}`)
         .pipe(
@@ -59,11 +61,11 @@ export class ShadeHttpFacade implements ShadeFacade {
     }
   }
 
-  async getShadesByCollectionId(collectionId: string): Promise<Shade[]> {
+  async getByCollectionId(collectionId: string): Promise<Shade[]> {
     throw new ShadeGetByCollectionIdHttpError();
   }
 
-  async getShadesByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]> {
+  async getByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]> {
     try {
       return await this.httpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)
         .pipe(
@@ -75,12 +77,3 @@ export class ShadeHttpFacade implements ShadeFacade {
   }
 }
 
-const serialize = (obj: any): string => {
-  let str: any = [];
-  for (const p in obj) {
-    if (obj.hasOwnProperty(p) && obj[p]) {
-      str = [...str, encodeURIComponent(p) + '=' + encodeURIComponent(obj[p])];
-    }
-  }
-  return str.join('&');
-};

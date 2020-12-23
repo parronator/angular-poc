@@ -1,0 +1,29 @@
+  <div>
+    <nz-table #basicTable [nzData]="data.entities || []" [nzShowPagination]="false">
+      <thead>
+      <tr>
+        <th class="collection-table__select-col"><label nz-checkbox></label></th>
+        <th [nzSortOrder]="data.filters.orderBy === 'name' ? data.filters.orderDirection : ''"
+            (nzSortOrderChange)="changeOrder($event, 'name')"
+            [nzSortDirections]="['descend', 'ascend']">Product
+        </th>
+        <th>Todo: add columns</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor=" let it of basicTable.data">
+        <td><label nz-checkbox></label></td>
+        <td>{{it.name.value}}</td>
+        <td>---</td>
+        <td><a>Remove</a></td>
+      </tr>
+      </tbody>
+    </nz-table>
+
+    <nz-pagination class="shade-table__pagination" [nzPageIndex]="data.filters['page']" [nzTotal]="
+        getNumberOfPages(data.totalPages || 0, data.entities || [])"
+                   [nzPageSize]="data.pageSize || 0" (nzPageIndexChange)="changePage($event)"></nz-pagination>
+  </div>
+
+

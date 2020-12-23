@@ -1,17 +1,7 @@
 import {Shade} from './shade';
-import {ShadeFilters} from './filters';
+import {BaseFacade} from '../../../shared/domain/BaseFacade';
 
-export abstract class ShadeFacade {
-  abstract async getAll(): Promise<Shade[]>;
-  abstract async getAllFiltered(filters: ShadeFilters): Promise<ShadeGetAllFilteredResponse>;
-  abstract async getShadeById(id: string): Promise<Shade>;
-  abstract async getShadesByCollectionId(collectionId: string): Promise<Shade[]>;
-  abstract async getShadesByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]>;
-  abstract async create(): Promise<void>;
-}
-
-export interface ShadeGetAllFilteredResponse {
-  totalPages: number;
-  pageSize: number;
-  shades: Shade[];
+export abstract class ShadeFacade extends BaseFacade<Shade>{
+  abstract async getByCollectionId(collectionId: string): Promise<Shade[]>;
+  abstract async getByCollectionIdAsPage(collectionId: string, page: number): Promise<Shade[]>;
 }

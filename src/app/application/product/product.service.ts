@@ -2,34 +2,38 @@
 import {UniqueId} from '../../shared/domain/uniqueId';
 import {ProductFacade} from '../../core/product/domain/productFacade';
 import {BaseService} from '../../shared/application/base.service';
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class ProductService extends BaseService<Product>{
+
   constructor(private productFacade: ProductFacade) {
     super();
   }
 
-  async getAllProducts(): Promise<void>{
-    this.setLoading(true);
-    const products = await this.productFacade.getAll();
-    this.setEntities(products);
-    this.setLoading(false);
+  protected refreshEntities(): void {
+    this.getAll();
   }
 
-  async createProduct(product: Product): Promise<void> {
-    this.setLoading(true);
-    await this.productFacade.create(product);
-    this.addEntity(product);
-    this.setLoading(false);
+  async getAll(): Promise<void>{
+    await this.tryLoad(async () => {
+      const load = await this.productFacade.getAll();
+      this.setEntities(load);
+    });
   }
 
-  async getProductById(id: UniqueId): Promise<void> {
-    this.setLoading(true);
-    const products = await this.productFacade.getById(id.value);
-    // TODO: Discuss what the state should look like when loading by Id.
-    this.setEntities([products]);
-    this.setLoading(false);
+  async create(product: Product): Promise<void> {
+    await this.tryLoad(async () => {
+      await this.productFacade.create(product);
+      this.addEntity(product);
+    });
+  }
+
+  async getById(id: UniqueId): Promise<void> {
+    await this.tryLoad(async () => {
+      const products = await this.productFacade.getById(id.value);
+      this.setEntities([products]);
+    });
   }
 
 }

@@ -9,7 +9,7 @@ export class CollectionService extends BaseService<Collection> {
     super();
   }
 
-  async getAllCollections(): Promise<void> {
+  async getAll(): Promise<void> {
     this.setLoading(true);
     try{
       const collections = await this.collectionFacade.getAllCollections();
@@ -32,6 +32,10 @@ export class CollectionService extends BaseService<Collection> {
   }
   async createCollection(collection: Collection): Promise<void>{
     throw new Error('Not yet implemented');
+  }
+
+  protected refreshEntities(): void {
+    this.getAll();
   }
 
 }

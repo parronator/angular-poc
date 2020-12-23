@@ -21,7 +21,7 @@ export class CollectionComponent implements OnInit {
   }
 
   loadInitialProducts(): void{
-    this.productService.getAllProducts();
+    this.productService.getAll();
     console.log('products');
     console.log(this.productService.state$.value.entities);
   }

@@ -29,8 +29,6 @@
       <td class="collection-table__shade-name">{{data.name.value}}</td>
       <td *ngFor="let product of productService.state$.value.entities; index as p"><div [ngClass]="style(findRecipe(data.colorId, p))"></div></td>
       <td>
-        <a>Action 一 {{data.name.value}}</a>
-        <nz-divider nzType="vertical"></nz-divider>
         <a>Delete</a>
       </td>
     </tr>

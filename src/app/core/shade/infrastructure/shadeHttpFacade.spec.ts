@@ -53,7 +53,7 @@ describe('ShadeHttpFacade', () => {
       expect(result1).toEqual({
         pageSize: shadeResponsePage1Fixture.pageSize,
         totalPages: shadeResponsePage1Fixture.totalPages,
-        shades: shadeListFixturePage1
+        entities: shadeListFixturePage1
       });
       page = 2;
       when(MockHttpClient.get(anyString())).thenReturn(of(shadeResponsePage2Fixture));
@@ -63,7 +63,7 @@ describe('ShadeHttpFacade', () => {
       expect(result2).toEqual({
         pageSize: shadeResponsePage2Fixture.pageSize,
         totalPages: shadeResponsePage2Fixture.totalPages,
-        shades: shadeListFixturePage2
+        entities: shadeListFixturePage2
       });
     });
 
@@ -71,7 +71,7 @@ describe('ShadeHttpFacade', () => {
       when(MockHttpClient.get(anyString())).thenThrow(new HttpErrorResponse({status: 500}));
       const collectionId = 'any';
       const page = 1;
-      const call = facade.getShadesByCollectionIdAsPage(collectionId, page);
+      const call = facade.getByCollectionIdAsPage(collectionId, page);
       verify(MockHttpClient.get(`/shades?collectionid=${collectionId}&page=${page}`)).called();
       await expectAsync(call).toBeRejectedWith(jasmine.any(ShadeGetByCollectionIdAsPageHttpError));
     });
@@ -80,7 +80,7 @@ describe('ShadeHttpFacade', () => {
   describe('get single shades', () => {
     it('should return a single shade when retriving a single shade', async () => {
       when(MockHttpClient.get(anyString())).thenReturn(of(shadeJsonFixtureList[0]));
-      const result = await facade.getShadeById('1');
+      const result = await facade.getById('1');
       verify(MockHttpClient.get('/api/shades/1')).called();
       expect(result).toEqual(singleShadeFixture);
     });

@@ -1,9 +1,10 @@
-import {ShadeFacade, ShadeGetAllFilteredResponse} from '../../core/shade/domain/shadeFacade';
+import {ShadeFacade} from '../../core/shade/domain/shadeFacade';
 import {Shade} from '../../core/shade/domain/shade';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {pluck} from 'rxjs/operators';
-import {ShadeFilters} from '../../core/shade/domain/filters';
+import {EntityFilter} from '../../core/shade/domain/filters';
+import {GetAllFilteredResponse} from '../../shared/domain/GetAllFilteredResponse';
 
 export interface ShadeState {
   loading: boolean;
@@ -11,7 +12,7 @@ export interface ShadeState {
   totalPages: number;
   pageSize: number;
   error: boolean;
-  filters: ShadeFilters;
+  filters: EntityFilter;
 }
 
 export const InitialShadeState: ShadeState = {
@@ -44,8 +45,8 @@ export class ShadeService {
       this.setLoading(true);
     }
     try {
-      const response: ShadeGetAllFilteredResponse = await this.shadeFacade.getAllFiltered(currentState.filters);
-      this.setEntities(response.shades, response.totalPages, response.pageSize);
+      const response: GetAllFilteredResponse<Shade> = await this.shadeFacade.getAllFiltered(currentState.filters);
+      this.setEntities(response.entities, response.totalPages, response.pageSize);
     } catch (e) {
       this.setError();
     }
@@ -66,7 +67,7 @@ export class ShadeService {
 
   async create(shade: Shade): Promise<void> {
     this.setLoading(true);
-    await this.shadeFacade.create();
+    await this.shadeFacade.create(shade);
     this.addEntity(shade);
     this.setLoading(false);
   }

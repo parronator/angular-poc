@@ -1,4 +1,4 @@
-export interface ShadeFilters {
+export interface EntityFilter {
   page: number;
   orderBy: string;
   orderDirection: string;

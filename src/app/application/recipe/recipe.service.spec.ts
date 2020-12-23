@@ -26,7 +26,7 @@ describe('RecipeService', () => {
 
   it('should retrieve a list of all recipes', async () => {
     const data = recipeFixtureList;
-    when(MockRecipeFacade.getAllRecipes()).thenResolve(data);
+    when(MockRecipeFacade.getAll()).thenResolve(data);
 
     let currentState = 0;
     const expectedState: any = {
@@ -41,14 +41,14 @@ describe('RecipeService', () => {
       currentState++;
     });
 
-    await service.getAllRecipes();
+    await service.getAll();
     subscription.unsubscribe();
-    verify(MockRecipeFacade.getAllRecipes()).called();
+    verify(MockRecipeFacade.getAll()).called();
   });
 
   xit('should retrieve a single recipe when searching by id.', async () => {
     const data = singleRecipeFixture;
-    when(MockRecipeFacade.getRecipeById(anyString())).thenResolve(data);
+    when(MockRecipeFacade.getById(anyString())).thenResolve(data);
 
     let currentState = 0;
     const expectedState: any = {
@@ -65,6 +65,6 @@ describe('RecipeService', () => {
 
     await service.getRecipeById('any');
     subscription.unsubscribe();
-    verify(MockRecipeFacade.getAllRecipes()).called();
+    verify(MockRecipeFacade.getAll()).called();
   });
 });

@@ -9,6 +9,8 @@ import {BasicFormComponent} from './pages/basic-form/basic-form.component';
 import {CollectionExampleComponent} from './pages/entity/collection-example/collection-example.component';
 import {CollectionComponent} from './pages/entity/collection/collection.component';
 import { ShadeTableComponent } from './components/shade-table/shade-table.component';
+import { ProductTableComponent } from './components/product-table/product-table.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 
 @NgModule({
@@ -20,13 +22,17 @@ import { ShadeTableComponent } from './components/shade-table/shade-table.compon
     CollectionExampleComponent,
     CollectionComponent,
     ShadeTableComponent,
+    ProductTableComponent,
+    ProductsComponent,
   ],
   exports: [
     WelcomeComponent,
     BasicFormComponent,
     TranslationsComponent,
     ShadesComponent,
-    CollectionExampleComponent
+    CollectionExampleComponent,
+    ProductTableComponent,
+    ProductsComponent
   ],
   imports: [
     CoreModule,

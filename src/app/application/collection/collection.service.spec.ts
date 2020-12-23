@@ -43,7 +43,7 @@ describe('CollectionService', () => {
         currentState++;
       });
 
-      await collectionService.getAllCollections();
+      await collectionService.getAll();
       subscription.unsubscribe();
       verify(MockCollectionFacade.getAllCollections()).called();
     });
@@ -63,7 +63,7 @@ describe('CollectionService', () => {
         currentState++;
       });
 
-      await collectionService.getAllCollections();
+      await collectionService.getAll();
       subscription.unsubscribe();
       verify(MockCollectionFacade.getAllCollections()).called();
 
@@ -84,7 +84,7 @@ describe('CollectionService', () => {
         currentState2++;
       });
 
-      await collectionService.getAllCollections();
+      await collectionService.getAll();
       subscription2.unsubscribe();
       verify(MockCollectionFacade.getAllCollections()).called();
 

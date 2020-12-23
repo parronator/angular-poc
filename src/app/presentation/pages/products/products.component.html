@@ -1,0 +1,16 @@
+<ng-container *ngIf="{
+    state: productService.state$ | async,
+    loading: productService.loading$ | async,
+    error: productService.error$ | async
+} as data">
+  <ui-sidebar-layout *ngIf="data">
+    <ui-search-header header></ui-search-header>
+    <ui-sidebar sidebar></ui-sidebar>
+    <ng-container body *ngIf="data.state">
+      <h1 class="hello-text">Products</h1>
+      <span *ngIf="data.loading">Loading...</span>
+      <span *ngIf="data.error">Error found!</span>
+      <product-table *ngIf="!data.error" [data]="data.state"></product-table>
+    </ng-container>
+  </ui-sidebar-layout>
+</ng-container>

@@ -1,8 +1,7 @@
 import {Product} from './product';
+import {BaseFacade} from "../../../shared/domain/BaseFacade";
 
-export abstract class ProductFacade {
-  abstract async getAll(): Promise<Product[]>;
-  abstract async create(product: Product): Promise<Product>;
-  abstract async getById(id: string): Promise<Product>;
+export abstract class ProductFacade extends BaseFacade<Product> {
+  //Todo: Product spefific requests
 }
 

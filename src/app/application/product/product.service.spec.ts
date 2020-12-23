@@ -31,13 +31,13 @@ describe('ProductService', () => {
       currentState++;
     });
 
-    await service.getAllProducts();
+    await service.getAll();
     verify(MockProductFacade.getAll()).called();
   });
 
   it('should create a new product', async () => {
     const singleProduct = singleProductFixture;
-    when(MockProductFacade.create(singleProduct)).thenResolve(singleProduct);
+    // when(MockProductFacade.create(singleProduct)).thenResolve(singleProduct);
 
     let currentState = 0;
     const expectedState: any = {
@@ -52,7 +52,7 @@ describe('ProductService', () => {
       currentState++;
     });
 
-    await service.createProduct(singleProduct);
+    await service.create(singleProduct);
     subscription.unsubscribe();
     verify(MockProductFacade.create(singleProduct)).called();
   });
@@ -74,7 +74,7 @@ describe('ProductService', () => {
       currentState++;
     });
 
-    await service.getProductById(singleProductFixture.id);
+    await service.getById(singleProductFixture.id);
     subscription.unsubscribe();
     verify(MockProductFacade.getById(singleProduct.id.value)).called();
   });

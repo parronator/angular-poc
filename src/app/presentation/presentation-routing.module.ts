@@ -5,6 +5,7 @@ import {BasicFormComponent} from './pages/basic-form/basic-form.component';
 import {TranslationsComponent} from './pages/translations/translations.component';
 import {ShadesComponent} from './pages/shades/shades.component';
 import {CollectionExampleComponent} from './pages/entity/collection-example/collection-example.component';
+import {ProductsComponent} from './pages/products/products.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'ui', loadChildren: () => import('../shared/ui/ui.module').then(m => m.UiModule) },
   { path: 'translations', component: TranslationsComponent },
   { path: 'shades', component: ShadesComponent },
+  { path: 'products', component: ProductsComponent },
   {path: 'collectionExample', component: CollectionExampleComponent},
 ];
 

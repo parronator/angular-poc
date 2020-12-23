@@ -12,22 +12,29 @@ export class RecipeService extends BaseService<Recipe> {
     super();
   }
 
-  async getAllRecipes(): Promise<void>{
-    this.setLoading(true);
-    const recipes = await this.facade.getAllRecipes();
-    this.setEntities(recipes);
-    this.setLoading(false);
+  async getAll(): Promise<void>{
+    await this.tryLoad(async () => {
+      const load = await this.facade.getAll();
+      this.setEntities(load);
+    });
   }
-  getAllRecipesPage(page: number): Promise<Recipe[]>{
+  async getAllRecipesPage(page: number): Promise<Recipe[]>{
     throw new Error('Not yet implemented');
   }
-  getAllRecipesByProductId(productId: string): Promise<Recipe[]>{
+  async getAllRecipesByProductId(productId: string): Promise<Recipe[]>{
     throw new Error('Not yet implemented');
   }
-  getAllRecipesByProductIdPage(productId: string, page: number): Promise<Recipe[]>{
+  async getAllRecipesByProductIdPage(productId: string, page: number): Promise<Recipe[]>{
     throw new Error('Not yet implemented');
   }
-  getRecipeById(id: string): Promise<Recipe>{
-    throw new Error('Not yet implemented');
+  async getRecipeById(id: string): Promise<void>{
+    await this.tryLoad(async () => {
+      const load = await this.facade.getById(id);
+      this.setEntity(load);
+    });
+  }
+
+  protected refreshEntities(): void {
+    this.getAll();
   }
 }
