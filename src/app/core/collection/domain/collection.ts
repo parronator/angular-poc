@@ -1,6 +1,12 @@
 import {UniqueId} from '../../../shared/domain/uniqueId';
 import {CollectionName} from './collectionValueObject';
-import {Shade} from '../../shade/domain/shade';
+import {Shade, ShadeJson} from '../../shade/domain/shade';
+
+export interface CollectionJson{
+  id: string;
+  name: string;
+  shades: ShadeJson[];
+}
 
 export class Collection {
   constructor( private id: UniqueId, private name: CollectionName, private shades: Shade[]){
@@ -21,5 +27,13 @@ export class Collection {
 
   static create({id, name, shades}: any): Collection {
     return new Collection(UniqueId.create(id), CollectionName.create(name), shades.map((shade: any) => Shade.create(shade)));
+  }
+
+  toJson(): CollectionJson{
+    return {
+      id: this.id.value,
+      name: this.name.value,
+      shades: this.shades.map(shade => shade.toJson())
+    };
   }
 }

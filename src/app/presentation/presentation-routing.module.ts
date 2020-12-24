@@ -6,6 +6,8 @@ import {TranslationsComponent} from './pages/translations/translations.component
 import {ShadesComponent} from './pages/shades/shades.component';
 import {CollectionExampleComponent} from './pages/entity/collection-example/collection-example.component';
 import {ProductsComponent} from './pages/products/products.component';
+import {CreateComponentExampleComponent} from './pages/create-component-example/create-component-example.component';
+import {CollectionComponent} from './pages/entity/collection/collection.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
@@ -14,7 +16,10 @@ const routes: Routes = [
   { path: 'translations', component: TranslationsComponent },
   { path: 'shades', component: ShadesComponent },
   { path: 'products', component: ProductsComponent },
-  {path: 'collectionExample', component: CollectionExampleComponent},
+  {path: 'collectionExample', redirectTo: 'collection/1', pathMatch: 'full'},
+  {path: 'collection/:id', component: CollectionComponent},
+  {path: 'createCollection', component: CreateComponentExampleComponent, pathMatch: 'full'}
+  //TODO: Investigate why collection/new doesn't work, even with pathMatch full
 ];
 
 @NgModule({

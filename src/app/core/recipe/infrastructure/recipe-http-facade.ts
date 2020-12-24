@@ -72,7 +72,7 @@ export class RecipeHttpFacade implements RecipeFacade {
     }
   }
 
-  async create(): Promise<void> {
+  async create(): Promise<Recipe> {
     throw Error('Not yet implemented');
   }
 

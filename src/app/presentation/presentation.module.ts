@@ -11,6 +11,8 @@ import {CollectionComponent} from './pages/entity/collection/collection.componen
 import { ShadeTableComponent } from './components/shade-table/shade-table.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { CreateCollectionComponent } from './components/create-collection/create-collection.component';
+import { CreateComponentExampleComponent } from './pages/create-component-example/create-component-example.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { ProductsComponent } from './pages/products/products.component';
     ShadeTableComponent,
     ProductTableComponent,
     ProductsComponent,
+    CreateCollectionComponent,
+    CreateComponentExampleComponent,
   ],
   exports: [
     WelcomeComponent,
@@ -32,7 +36,9 @@ import { ProductsComponent } from './pages/products/products.component';
     ShadesComponent,
     CollectionExampleComponent,
     ProductTableComponent,
-    ProductsComponent
+    ProductsComponent,
+    CreateCollectionComponent,
+    CreateComponentExampleComponent
   ],
   imports: [
     CoreModule,

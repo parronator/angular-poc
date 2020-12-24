@@ -35,6 +35,13 @@ var Collection = /** @class */ (function () {
         var id = _a.id, name = _a.name, shades = _a.shades;
         return new Collection(uniqueId_1.UniqueId.create(id), collectionValueObject_1.CollectionName.create(name), shades.map(function (shade) { return shade_1.Shade.create(shade); }));
     };
+    Collection.prototype.toJson = function () {
+        return {
+            id: this.id.value,
+            name: this.name.value,
+            shades: this.shades.map(function (shade) { return shade.toJson(); })
+        };
+    };
     return Collection;
 }());
 exports.Collection = Collection;

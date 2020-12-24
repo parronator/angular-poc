@@ -71,7 +71,6 @@ var Recipe = /** @class */ (function () {
     });
     Recipe.create = function (_a) {
         var id = _a.id, sourceId = _a.sourceId, sourceName = _a.sourceName, colorId = _a.colorId, opacity = _a.opacity, thickness = _a.thickness, engineered = _a.engineered, released = _a.released;
-        console.log({ id: id, sourceId: sourceId, sourceName: sourceName, colorId: colorId, opacity: opacity, thickness: thickness, engineered: engineered, released: released });
         // tslint:disable-next-line:max-line-length
         return new Recipe(uniqueId_1.UniqueId.create(id), uniqueId_1.UniqueId.create(sourceId), sourceName, uniqueId_1.UniqueId.create(colorId), opacity, thickness, engineered, released);
     };

@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from '../../../../application/product/product.service';
 import {Product} from '../../../../core/product/domain/product';
 import {Recipe} from '../../../../core/recipe/domain/recipe';
+import {ActivatedRoute} from "@angular/router";
+import {CollectionService} from "../../../../application/collection/collection.service";
+import {Collection} from "../../../../core/collection/domain/collection";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-collection',
@@ -9,14 +13,32 @@ import {Recipe} from '../../../../core/recipe/domain/recipe';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit {
-  @Input()
-  collection: any;
+  subscriptions: Array<Subscription>;
+  error = false;
+  collection: Collection | undefined;
 
   products: Product[];
 
-  constructor(public productService: ProductService) { this.products = []; }
+  constructor(private route: ActivatedRoute, private collectionService: CollectionService, public productService: ProductService) {
+    this.products = [];
+    this.subscriptions = new Array<Subscription>();
 
-  ngOnInit(): void {
+  }
+
+  async ngOnInit(): Promise<void> {
+    console.log('id');
+    console.log(this.route.snapshot.paramMap.get('id'));
+    const collectionId = this.route.snapshot.paramMap.get('id');
+    if (collectionId){
+      console.log("yeah")
+      await this.collectionService.getById(collectionId);
+    }
+    this.subscriptions.push(this.collectionService.entities$.subscribe(entities => {
+      if (entities[0]){
+        this.collection = entities[0];
+      }
+    }));
+    this.subscriptions.push(this.collectionService.error$.subscribe(error => this.error = error));
     this.loadInitialProducts();
   }
 

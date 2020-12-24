@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {collectionSingleFixture} from '../../../../../fixture/collection';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-collection-example',
@@ -8,8 +9,9 @@ import {collectionSingleFixture} from '../../../../../fixture/collection';
 })
 export class CollectionExampleComponent implements OnInit {
 
+  constructor(private route: ActivatedRoute) {
+  }
   exampleCollection = collectionSingleFixture;
-  constructor() { }
 
   ngOnInit(): void {
   }

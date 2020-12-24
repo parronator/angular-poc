@@ -12,8 +12,15 @@ var Shade = /** @class */ (function () {
     }
     Shade.create = function (_a) {
         var id = _a.id, name = _a.name, colorId = _a.colorId, color = _a.color;
-        console.log({ id: id, name: name, colorId: colorId, color: color });
         return new Shade(uniqueId_1.UniqueId.create(id), shadeValueObject_1.ShadeColor.create(color), shadeValueObject_1.ShadeName.create(name), colorId);
+    };
+    Shade.prototype.toJson = function () {
+        return {
+            id: this.id.value,
+            color: this.color.value,
+            name: this.name.value,
+            colorId: this.colorId
+        };
     };
     return Shade;
 }());

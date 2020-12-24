@@ -1,0 +1,13 @@
+<p>create-collection works!</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="basic-form">
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <button class="-button" type="submit">Submit</button>
+</form>
+<p id="result">{{result}}</p>

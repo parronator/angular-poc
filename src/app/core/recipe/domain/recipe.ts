@@ -45,7 +45,6 @@ export class Recipe {
   }
 
   static create({id, sourceId, sourceName, colorId, opacity, thickness, engineered, released }: any): Recipe{
-    console.log({id, sourceId, sourceName, colorId, opacity, thickness, engineered, released });
     // tslint:disable-next-line:max-line-length
     return new Recipe(UniqueId.create(id), UniqueId.create(sourceId), sourceName,  UniqueId.create(colorId), opacity, thickness, engineered, released);
   }

@@ -26,9 +26,9 @@ export class ProductHttpFacade implements ProductFacade {
     }
   }
 
-  async create(product: Product): Promise<void> {
+  async create(product: Product): Promise<Product> {
     try {
-      await this.httpClient.post<Product>('/createProduct', product).toPromise();
+      return await this.httpClient.post<Product>('/createProduct', product).toPromise();
     } catch (e) {
       throw new ProductHttpError();
     }

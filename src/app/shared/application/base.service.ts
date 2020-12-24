@@ -36,6 +36,7 @@ export abstract class BaseService<T> {
   protected setEntity(object: T): void {
     const currentState = this.st.getValue();
     this.st.next({...currentState, entities: [object]});
+    console.log('SetEntity has been called.');
   }
 
   protected addEntity(object: T): void {
@@ -71,6 +72,11 @@ export abstract class BaseService<T> {
     this.refreshEntities();
   }
 
+  /**
+   * Sets loading state and tries to execute the given function, then sets loading to false.
+   * Sets error state in an exception is caught.
+   * @param fun function that should be executed.
+   */
   async tryLoad(fun: () => any): Promise<void>{
     const currentState = this.st.getValue();
     if (!currentState.entities.length) {

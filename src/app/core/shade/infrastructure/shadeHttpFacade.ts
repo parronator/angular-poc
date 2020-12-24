@@ -19,8 +19,8 @@ export class ShadeHttpFacade implements ShadeFacade {
   }
 
 
-  async create(): Promise<void> {
-    return undefined;
+  async create(): Promise<Shade> {
+    throw new Error("Not yet implemented")
   }
 
   async getAll(): Promise<Shade[]> {
